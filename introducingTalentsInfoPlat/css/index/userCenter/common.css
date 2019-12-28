@@ -1,0 +1,32 @@
+html,body{ min-width: 1202px; }
+#app{ position: relative; }
+.main{ width: 100%;background: #F6F6F6;padding: 30px 0 80px;min-width: 1202px; }
+.main .block{ width: 1202px;margin: 0 auto;min-width: 1200px; }
+.main .block .right{ width: 250px;min-width: 250px;min-height: 435px;background: #FFF; }
+.main .block .right .userLogo{ width: 100px;height: 100px;border-radius: 100px;margin: 30px auto;display: block; }
+.main .block .right .list{ cursor:pointer;background: url('') no-repeat;background-size: 18px auto;background-position: 30px center;  padding-left: 76px;width: 100%;line-height: 55px;box-sizing: border-box;font-size: 18px;color:#999; }
+.main .block .right .list.active{ background-color: #206BD1;color:#FFF; }
+.main .block .right .list.more{ position: relative; }
+.main .block .right .list.more:after{ width: 14px;height: 7px;content: '';background: url('../../../img/index/icon/icon_arrow.png') no-repeat;background-size: 14px auto;transform:rotate(-90deg);position: absolute;top: 25px; right: 21px;  }
+.main .block .right .list:nth-child(1){ background-image: url('../../../img/index/user/icon_list1.png'); }
+.main .block .right .list:nth-child(1).active{ background-image: url('../../../img/index/user/icon_list1_active.png'); }
+.main .block .right .list:nth-child(2){ background-image: url('../../../img/index/user/icon_list2.png'); }
+.main .block .right .list:nth-child(3){ background-image: url('../../../img/index/user/icon_list3.png'); }
+.main .block .right .list:nth-child(4){ background-image: url('../../../img/index/user/icon_list4.png'); }
+
+.main .block .left{ width: 920px;min-width: 920px;background: #FFF;padding-bottom: 10px; }
+.main .block .left .nav{ padding: 22px 30px; line-height: 33px;border-bottom: 1px solid #DBDBDB;width:100%;box-sizing: border-box;height: 77px; }
+.main .block .left .nav span{ font-size: 19px;color: #999;margin-right: 60px;cursor: pointer; }
+.main .block .left .nav span.active{ border-bottom: 2px solid #333;color: #333; }
+.main .block .left .nav span a{ color: #999; }
+.main .block .left .nav span.active { color: #333; }
+.main .block .left .content{ position: relative; }
+.main .block .left .content .editIntro{ position: absolute;top: 29px;right: 30px; }
+.main .block .left .content li { font-size:18px;line-height:28px;clear: both;color:#666;padding-top: 20px;box-sizing:border-box; }
+.main .block .left .content li span{ width: 240px;float:left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; }
+.main .block .left .content li span.title{ color:#999;padding-right:15px;width: 120px;text-align:right;box-sizing:border-box; }
+.main .block .left .content li.edit{ width: 100%; }
+.main .block .left .content li .img{ height: 164px;width: 240px;float:left; }
+.main .block .left .content li .logo{ width: 164px; }
+.main .block .left .content li .intro{ width: 612px;margin-right: 56px;overflow: unset;    white-space: normal; }
+.main .block .left .content .editBtn{ line-height: 40px;padding-right: 20px;box-sizing: border-box;height: 40px;width: 104px;background: #206BD1 url('../../../img/index/user/icon_edit.png') no-repeat; background-size: 13px auto; background-position: 68px center; padding-top: 0;text-align: center;font-size: 16px;color: #FFF;cursor: pointer; }

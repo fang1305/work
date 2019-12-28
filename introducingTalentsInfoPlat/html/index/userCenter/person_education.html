@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="divport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>引才引智</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/public/header.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/public/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/public/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/index/userCenter/common.css" />
+</head>
+<style>
+    .main .block .left .content .right_line,
+    .main .block .left .content .right_line{ max-width: 360px; }
+    .main .block .left .content li .logo{ width: 170px;height: auto; }
+    .main .block .left .content li .logoBox{ width: 170px;display: inline-block; }
+</style>
+<body>
+    <div id="app">
+        <div class="navBar">
+            <div class="nav">
+                <div class="chinese" @click="changeLang">
+                    <span>{{languageText}}</span>
+                    <i class="iconfont icon-sanjiao_xia"></i>
+                </div>
+                <div class="avatar"><a href="../login.html"><img src="../../../img/index/icon/avator.png" /></a> </div>
+                <ul class="nav-list">
+                    <li><a href="../../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+                    <li><a href="../expertTalents.html"><span>专家人才</span></a></li>
+                    <li><a href="../technology.html"><span>项目技术</span></a></li>
+                    <li><a href="../cooperativeAgency.html"><span>合作机构</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="block flex-def flex-zBetween">
+                <div class="right">
+                    <img src="../../../img/index/co3.jpg" class="userLogo" />
+                    <ul>
+                        <li class="list active">个人信息</li>
+                        <li class="list more">需求发布</li>
+                        <li class="list more">资源共享</li>
+                        <li class="list">申请历史</li>
+                    </ul>
+                </div>
+                <div class="left">
+                    <div class="nav">
+                        <span><a href="./person.html">基本信息</a></span>
+                        <span class="active">教育背景</span>
+                        <span><a href="./person_now.html">现单位情况</a></span>
+                        <span><a href="./person_intention.html">意向单位</a></span>
+                        <span><a href="./person_other.html">其他</a></span>
+                    </div>
+                    <div class="content flex-def flex-zBetween">
+                        <div class="right_line flex-item">
+                            <ul>
+                                <li><span class="title">毕业院校</span><span>狐言</span></li>
+                                <li><span class="title">学历</span><span>狐言</span></li>
+                                <li><span class="title">专业</span><span>狐言</span></li>
+                                <li><span class="title">研究方向</span><span>狐言</span></li>
+                            </ul>
+                        </div>
+                        <div class="left_line flex-item">
+                            <ul>
+                                <li>
+                                     <span class="title">本人照片</span>
+                                     <div class="logoBox">
+                                         <img src="../../../img/index/co2.jpg" class="img logo" />
+                                         <img src="../../../img/index/co2.jpg" class="img logo" />
+                                     </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="editIntro editBtn">修改</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="wrap">
+                <div class="left">
+                    <p>支持单位: 河北省外国专家局</p>
+                    <p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+                    <p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+                </div>
+                <div class="right">
+                    <img class="code" src="../../img/index/icon_code.jpg" alt="" />
+                    <div class="contact-us">
+                        <p>联系我们</p>
+                        <div class="email">
+                            <img src="../../img/index/icon/icon_email.png" />
+                            <span>service@hbafea.com</span>
+                        </div>
+                        <div class="email">
+                            <img src="../../img/index/icon/icon_telphone.png" />
+                            <span>0311-85111217(8:30-17:30)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="cont">
+                <a href=""><span>关于我们</span></a> <span>|</span> <a
+                    href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../../js/vue.min.js"></script>
+    <script type="text/javascript" src="../../../js/config.js"></script>
+    <script>
+        if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            location.href = "../../home/companyIntro.html?id=" + parseUrl().id;
+        } else {}
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                indexText: "首页",
+                lang: "cn",
+                languageText: "English",
+                id: 0,
+                activeNum: 1,
+            },
+            created() {
+                this.id = parseUrl().id;
+                if (localStorage.getItem('lang') == 'en') {
+                    this.lang = 'en';
+                    this.languageText = "中文";
+                }
+                this.getDetail();
+            },
+            methods: {
+                changeTab(num) {
+                    this.activeNum = num;
+                },
+                // 中英文切换
+                changeLang() {
+                    if (this.lang == 'cn') {
+                        this.lang = 'en';
+                        localStorage.setItem('lang', 'en');
+                        this.languageText = '中文';
+                        // 重新请求数据
+                        this.getDetail();
+                        this.changeTab(this.activeNum, 1);
+                    } else {
+                        this.lang = 'cn';
+                        localStorage.setItem('lang', 'cn');
+                        this.languageText = 'English';
+                        // 重新请求数据
+                        this.getDetail();
+                        this.changeTab(this.activeNum, 1);
+                    }
+                },
+                getDetail() {
+                    let that = this;
+                    $.ajax({
+                        url: config.apiHost + 'works/worksDetail',
+                        type: 'POST', //GET
+                        async: true, //或false,是否异步
+                        data: {
+                            lang: that.lang,
+                            id: parseUrl().id
+                        },
+                        dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+                        success: function (data, textStatus, jqXHR) {
+                            typeof data == "object" ? '' : data = JSON.parse(data);
+                            if (data.status == 'ok') {
+                            } else {
+                            }
+                        },
+                        error: function (xhr, textStatus) {
+                            // 发送失败
+                            console.log('错误')
+                            console.log(xhr)
+                            console.log(textStatus)
+                        },
+                    })
+                }
+            },
+        });
+
+        $(function () {})
+    </script>
+</body>
+
+</html>

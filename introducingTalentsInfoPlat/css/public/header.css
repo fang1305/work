@@ -44,3 +44,4 @@ a { text-decoration: none;}
 /* 侧轴start对齐 */
 .flex-cStart {-webkit-box-align: start;-moz-align-items: start;-webkit-align-items: start;align-items: start;}
 .flex-cEnd {-webkit-box-align: end;-moz-align-items: flex-end;-webkit-align-items: flex-end;align-items: flex-end;}
+.flex-item{ flex: 1; }

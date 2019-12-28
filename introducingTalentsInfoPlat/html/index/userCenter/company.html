@@ -9,45 +9,22 @@
     <link rel="stylesheet" type="text/css" href="../../../css/public/header.css" />
     <link rel="stylesheet" type="text/css" href="../../../css/public/footer.css" />
     <link rel="stylesheet" type="text/css" href="../../../css/public/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/index/userCenter/common.css" />
 </head>
 <style>
-    html,body{ min-width: 1202px; }
-    .main{ width: 100%;background: #F6F6F6;padding: 30px 0 80px;min-width: 1202px; }
-    .main .block{ width: 1202px;margin: 0 auto;min-width: 1200px; }
-    .main .block .right{ width: 250px;min-width: 250px;min-height: 935px;background: #FFF; }
-    .main .block .right .userLogo{ width: 100px;height: 100px;border-radius: 100px;margin: 30px auto;display: block; }
-    .main .block .right .list{ cursor:pointer;background: url('') no-repeat;background-size: 18px auto;background-position: 30px center;  padding-left: 76px;width: 100%;line-height: 55px;box-sizing: border-box;font-size: 18px;color:#999; }
-    .main .block .right .list.active{ background-color: #206BD1;color:#FFF; }
-    .main .block .right .list.more{ position: relative; }
-    .main .block .right .list.more:after{ width: 14px;height: 7px;content: '';background: url('../../../img/index/icon/icon_arrow.png') no-repeat;background-size: 14px auto;transform:rotate(-90deg);position: absolute;top: 25px; right: 21px;  }
-    .main .block .right .list:nth-child(1){ background-image: url('../../../img/index/user/icon_list1.png'); }
-    .main .block .right .list:nth-child(1).active{ background-image: url('../../../img/index/user/icon_list1_active.png'); }
-    .main .block .right .list:nth-child(2){ background-image: url('../../../img/index/user/icon_list2.png'); }
-    .main .block .right .list:nth-child(3){ background-image: url('../../../img/index/user/icon_list3.png'); }
-    .main .block .right .list:nth-child(4){ background-image: url('../../../img/index/user/icon_list4.png'); }
-    
-    .main .block .left{ width: 920px;min-width: 920px;background: #FFF;padding-bottom: 30px; }
-    .main .block .left .nav{ padding: 22px 30px; line-height: 33px;border-bottom: 1px solid #DBDBDB;width:100%;box-sizing: border-box;height: 77px; }
-    .main .block .left .nav span{ font-size: 19px;color: #999;margin-right: 60px;cursor: pointer; }
-    .main .block .left .nav span.active{ border-bottom: 2px solid #333;color: #333; }
-    .main .block .left .content{ position: relative; }
-    .main .block .left .content .editIntro{ position: absolute;top: 29px;right: 30px; }
-    /* width: 732px; */
-    .main .block .left .content li { font-size:18px;line-height:28px;clear: both;color:#666;padding-top: 25px;box-sizing:border-box; }
-    .main .block .left .content li span{ width: 240px;float:left; }
-    .main .block .left .content li span.title{ color:#999;padding-right:15px;width: 120px;text-align:right;box-sizing:border-box; }
-    .main .block .left .content li.edit{ width: 100%; }
-    .main .block .left .content li .img{ height: 164px;width: 240px;float:left; }
-    .main .block .left .content li .logo{ width: 164px; }
-    .main .block .left .content li .intro{ width: 612px;margin-right: 56px; }
-    .main .block .left .content li:last-child{ clear:both; }
-    .main .block .left .content .editBtn{ line-height: 40px;padding-right: 20px;box-sizing: border-box;height: 40px;width: 104px;background: #206BD1 url('../../../img/index/user/icon_edit.png') no-repeat; background-size: 13px auto; background-position: 68px center; padding-top: 0;text-align: center;font-size: 16px;color: #FFF;cursor: pointer; }
-    /* .main .block .left .content li{ line-height: 28px;float:left;color:#666;width: 283px;padding-top: 25px;box-sizing:border-box;display: inline-block; }
-    .main .block .left .content li.intro{ width: 512px;padding: 24px 0 0 15px;line-height: 28px; }
-    .main .block .left .content li.editBtn{ line-height: 40px;height: 40px;width: 104px;background: #206BD1;margin-left: 56px;padding-top: 0;margin-top: 25px;text-align: center;font-size: 16px;color: #FFF;cursor: pointer; }
-    .main .block .left .content li.editBtn img{ width: 14px;height: 16px;margin-left: 6px;vertical-align: middle; } */
-
     .main .block .left .other li span.title2{ width: auto; }
+
+    /* shadow */
+    .shadow{ width: 100%;height: 100%;position: absolute;left: 0;right: 0;background: rgba(0,0,0,.1);top:0;bottom:0; }
+    .shadow .content{ width:839px;background: #FFF;margin: 80px auto; }
+    .shadow .content .headTitle{ width: 100%;position:relative;text-align: center;border-bottom: 1px solid #EEE;color: #333;font-size: 24px;line-height: 80px; }
+    .shadow .content .headTitle .closeBtn{ width: 30px;height: 30px;top: 26px;right: 60px;position: absolute; cursor: pointer;background: url('../../../img/index/icon/icon_close.png') no-repeat;background-size: 30px auto; }
+    .shadow .content .edit_main{ width: 100%; }
+    @media screen and (max-width: 1440px) {
+        .shadow .content{ width:839px;background: #FFF;margin: 80px auto; }
+        .shadow .content .headTitle{ font-size: 20px;line-height: 70px; }
+        .shadow .content .headTitle .closeBtn{ width: 24px;height: 24px;top: 26px;background-size: 24px auto; }
+    }
 </style>
 <body>
     <div id="app">
@@ -195,6 +172,14 @@
                 </div>
             </div>
         </div>
+        <div class="shadow hide">
+            <div class="content">
+                <div class="headTitle">企业信息发布<span class="closeBtn"></span></div>
+                <div class="edit_main">
+                    
+                </div>
+            </div>
+        </div>
         <div class="footer">
             <div class="wrap">
                 <div class="left">
@@ -240,17 +225,6 @@
                 lang: "cn",
                 languageText: "English",
                 id: 0,
-                detail: {},
-                count: {},
-                projectsDemand: [],
-                projects: [],
-                experts: [],
-                jobs: [],
-                expertCount: 0,
-                proCount: 0,
-                jobCount: 0,
-                jobPage: 1,
-                proDemandCount: 0,
                 activeNum: 1,
             },
             created() {
@@ -264,11 +238,6 @@
             methods: {
                 changeTab(num) {
                     this.activeNum = num;
-                },
-                // 查看更多
-                jobsMore() {
-                    this.jobPage = this.jobPage + 1;
-                    this.getProject('experts/jobsList', 'jobs', 'jobCount', this.jobPage);
                 },
                 // 中英文切换
                 changeLang() {
@@ -288,36 +257,6 @@
                         this.changeTab(this.activeNum, 1);
                     }
                 },
-                // 获取项目需求列表
-                getProject(url, type, count, page) {
-                    let that = this;
-                    $.ajax({
-                        url: config.apiHost + url,
-                        type: 'POST', //GET
-                        async: true, //或false,是否异步
-                        data: {
-                            lang: that.lang,
-                            limit: 4,
-                            page: page,
-                            works_id: parseUrl().id
-                        },
-                        dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
-                        success: function (data, textStatus, jqXHR) {
-                            // 发送成功
-                            if (data.status == 'ok') {
-                                that[type] = page = 1 ? data.data.list : that[type].concat(data.data
-                                    .list);
-                                that[count] = data.data.count;
-                            }
-                        },
-                        error: function (xhr, textStatus) {
-                            // 发送失败
-                            console.log('错误')
-                            console.log(xhr)
-                            console.log(textStatus)
-                        },
-                    })
-                },
                 getDetail() {
                     let that = this;
                     $.ajax({
@@ -332,14 +271,7 @@
                         success: function (data, textStatus, jqXHR) {
                             typeof data == "object" ? '' : data = JSON.parse(data);
                             if (data.status == 'ok') {
-                                console.log(data.data.info)
-                                localStorage.setItem('companyName', data.data.info.works_name);
-                                data.data.info.found_time = data.data.info.found_time.substring(0,
-                                    10);
-                                that.detail = data.data.info;
-                                that.count = data.data.count;
                             } else {
-                                alert(data.result);
                             }
                         },
                         error: function (xhr, textStatus) {
