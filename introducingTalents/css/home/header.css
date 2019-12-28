@@ -1,0 +1,31 @@
+﻿html,body { width: 100%; height: 100%; padding: 0; margin: 0; font-family: "微软雅黑"; font-size: 100px;}
+p { margin: 0; padding: 0;} 
+a { text-decoration: none; margin: 0; padding: 0;}
+.hide { display: none;}
+.header { width: 100%; height: 1rem; position: relative; }
+.header .menu { width: .4rem; line-height: 0; position: absolute; top: .33rem; left: .27rem;}
+.header .menu img { width: 100%; height: auto;}
+.header .logo { text-align: center; padding-top: .34rem; line-height: 0;}
+.header .logo img { width: auto; height: .42rem;}
+.header .search { width: .4rem; line-height: 0; position: absolute; top: .33rem; right: .27rem;}
+.header .search img { width: 100%; height: auto;}
+
+.search-group { width: 6.96rem; height: .4rem; padding: .09rem 0; background-color: #FFF; display: flex; display: -webkit-flex; display: -ms-flexbox; border-bottom: 1px solid #00468C; position: absolute; left: .27rem; top: .2rem; z-index: 1000;}
+.search-group span { font-size: .27rem; line-height: .4rem; color: #3333333; padding: 0 .09rem;}
+.search-group .line { width: 1px; height: .27rem; background: #333333; border: 0; margin: 0; margin-top: .07rem;}
+.search-group input { flex:1; padding: 0 .1rem; height: 100%; border: 0; outline: none; font-size: .27rem;}
+.search-group img { width: .4rem; height: .4rem; position: absolute; right: 0; bottom: .14rem;}
+
+.bottom { width: 100%; height: .48rem; text-align: center; font-size: 0;} 
+.bottom span { display: inline-block; font-size: 0;} 
+.bottom a { font-size: .18rem; line-height: .48rem; color: #999999; float: left;}
+.footer { padding: .27rem; position: relative;}  
+.footer .left { width: 100%;} 
+.footer .left p { font-size: .18rem; line-height: 1; color: #999999; margin-top: .18rem;} 
+.footer .left p.title { font-size: .22rem; line-height: 1; color: #666666; margin-top: .2rem;} 
+.footer .right { padding-top: .36rem; display: flex; display: -webkit-flex; line-height: 0;} 
+.footer .right .code { width: .95rem; height: .95rem; margin-right: 21px; } 
+.footer .right .contact-us p { font-size: .22rem; line-height: 1; color: #999999;} 
+.footer .right .contact-us .email { margin-top: .15rem; font-size: 0;}   
+.footer .right .contact-us .email span { font-size: .18rem; line-height: 1; color: #999999;} 
+.footer:after { width: 6.96rem; height: 1px; content: ''; background-color: #999999; position: absolute; bottom: 0; left: .27rem;} 

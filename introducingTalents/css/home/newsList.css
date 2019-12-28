@@ -1,0 +1,16 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;} 
+.main { padding: .27rem;}
+
+.list { width: 100%; font-size: 0; /* height: .72rem; overflow-x: scroll; overflow-y: hidden; white-space:nowrap; text-align: center;*/}
+.list .item { display: inline-block; width: 2.11rem; padding: 0 .1rem; height: .7rem; border: 1px solid #00468C; /*border-right: none;*/ font-size: .32rem; color: #00468C; line-height: .72rem; text-align: center; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.list .item:last-child { border-right: 1px solid #00468C;}
+.list .item.act { background-color: #00468C; color: #fff;}
+
+.news-list {}
+.news-list .news { width: 100%; margin-top: .27rem; line-height: 0; position: relative;} 
+.news-list .news .poster { width: 2.26rem; height: 1.31rem; float: left; margin-right: .32rem;}
+.news-list .news .poster img { width: 100%; height: 100%;}
+.news-list .news .name { font-size: .28rem; line-height: 1; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .08rem;}
+.news-list .news .desp { font-size: .24rem; line-height: 1.7; color: #666666; padding-top: .15rem; }
+.news-list .news .time { font-size: .22rem; line-height: 1.7; color: #999999; text-align: right; position: absolute; right: 0; bottom: 0;}
+.news-list .news:after { content:""; clear: both; display: block;} 

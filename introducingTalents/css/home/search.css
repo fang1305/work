@@ -1,0 +1,22 @@
+.intro-box { padding: .26rem; font-size: .33rem; line-height: 1; color: #333333; border-bottom: 1px solid #C6C6C6;}
+
+.news-list .news { padding: .26rem; border-bottom: 1px solid #EEEEEE;}
+.news-list .news:last-child { border-bottom: 0;}
+.news-list .news .flex-def { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.news-list .news .tag { font-size: .22rem; line-height: 1; color: #FFF; padding: .1rem .12rem; background: #00468D; margin-right: .26rem;}
+.news-list .news .name { flex: 1; font-size: .33rem; line-height: 1.3; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.news-list .news .time { width: 1.4rem; font-size: .22rem; line-height: 1.7; color: #999999; text-align: right;}
+.news-list .desp { margin-top: .2rem; font-size: .27rem; line-height: 1.7; color: #666666; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical;}
+
+.pages { text-align: center; margin-top: .25rem; padding-bottom: .54rem;}
+#pagination { display: inline-block;}
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active>a { background-color: #00468C;}
+.paginationjs .paginationjs-pages li>a { width: .54rem; height: .54rem; font-size: .27rem; line-height: .54rem;}
+.paginationjs .paginationjs-pages li.active>a { height: .54rem; line-height: .54rem; }  
+.paginationjs-prev a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs-next a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs .paginationjs-pages li { margin-right: .27rem;}
+.paginationjs-page,.paginationjs-prev,.paginationjs-next,.paginationjs-ellipsis { margin-top: .14rem;}
+.paginationjs-next { margin-right: 0 !important;} 
+
+ 

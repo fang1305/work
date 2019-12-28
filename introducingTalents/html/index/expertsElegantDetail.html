@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>河北省引才引智网</title>
+		<meta name="description" property="seo_description" content="河北省引才引智网" />
+		<meta name="keywords" property="seo_keywords" content="河北省引才引智网" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index/expertsElegantDetail.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="header">
+				<div class="left">
+					<div class="logo">
+						<img src="../../img/icon/logo.png" />
+					</div>
+					<p>支持单位：河北省外国专家局</p>
+				</div>
+				<div class="right">
+					<div class="htel">
+						<img src="../../img/icon/icon_tel.png" />
+						<div class="line"></div>
+						<span class="tel">0311-85111217</span>
+					</div>
+					<div class="email">service@hbafea.com</div>
+				</div>
+
+				<div class="search-group">
+					<div class="search">
+						<input type="text" v-model="keyword" name="keywords" id="keywords" value="" placeholder="搜索" />
+					</div>
+					<div class="search-btn" @click="searchFun">搜索</div>
+				</div>
+			</div>
+			<div class="navBar">
+				<div class="nav">
+					<ul class="nav-list">
+						<li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+						<li v-for="item in navBar" :class="[parentid == item.id?'act':'']"><span>{{item.typename}}</span>
+							<ul class="dropdown-menu">
+								<li v-on:click="articleList(item.childList[0].id,item.id,0)"></li>
+								<li v-for="item1 in item.childList" v-on:click="articleList(item1.id,item.id)">
+									<a>{{item1.typename}}</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="chinese" @click="changeLang"> 
+						<span>{{languageText}}</span>
+						<i class="iconfont icon-sanjiao_xia"></i>
+					</div>
+					<img class="avatar" src="../../img/icon/icon_avatar.png" /> 
+				</div>
+			</div> 
+
+			<div class="main">
+				<div class="second-nav" v-if="smallNav && position">
+					<div class="list">
+						<span v-for="item in smallNav" :class="[typeid == item.id?'act':'']" v-on:click="articleList(item.id,parentid)">{{item.typename}}</span> 
+					</div>
+					<div class="position" v-if="position">{{yourposition}}><span>{{position}}</span></div>
+				</div>
+				<div class="mcont">
+					<div class="left">
+						<div class="name" v-if="article.title">{{article.title}}</div>
+						<div class="time-view" v-if="article">
+							<span class="time" v-if="article.add_time">{{article.add_time | getDate}}</span>
+							<span class="from" v-if="article.typename">{{article.typename}}</span>
+							<span class="writer" v-if="article.author">作者：{{article.author}}</span>
+							<div class="view" v-if="article.click">
+								<i class="iconfont icon-yanjing"></i>
+								<span>{{article.click}}次浏览</span>
+							</div>
+						</div>
+						<hr class="line" v-if="article" /> 
+						<div class="newsCont" v-html="articleCont"></div> 
+					</div>
+					<div class="right"> 
+						 <div class="related-recommend">
+							<div class="title">专家风采</div>
+							<div class="cont">
+								<div class="item" v-for="(item,index) in recomList" v-if="index < 3" v-on:click="articleDetail(item.aid)">
+									<div class="poster">
+										<img :src="item.litpic" alt="" />
+									</div>
+									<div class="time">
+										<p class="tleft">{{item.title}}</p>
+										<p class="tright">{{item.add_time | getDate}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contact-gotop">
+				<div class="contact">
+					<img src="../../img/icon/index/icon_kefu.png" alt="" />
+				</div>
+				<div class="gtop">
+					<img src="../../img/icon/index/icon_gotop.png" alt="" />
+				</div>
+			</div>
+			<div class="footer">
+				<div class="wrap">
+					<div class="left">
+						<p>支持单位: 河北省外国专家局</p>
+						<p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+						<p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+					</div>
+					<div class="right">
+						<img class="code" src="../../img/icon/icon_code.jpg" alt="" />
+						<div class="contact-us">
+							<p>联系我们</p>
+							<div class="email">
+								<img src="../../img/icon/icon_email.png" />
+								<span>service@hbafea.com</span>
+							</div>
+							<div class="email">
+								<img src="../../img/icon/icon_telphone.png" />
+								<span>0311-85111217(8:30-17:30)</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="wrap">
+					<a href=""><span>关于我们</span></a> <span>|</span> <a href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/rest.js"></script>
+		<script type="text/javascript" src="../../js/vue.min.js"></script>   
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					title: "",
+					indexText: "首页",
+					lang: "cn",
+					languageText: "English",
+					yourposition: "您的位置",
+					navBar: "",
+					smallNav: "",
+					position: "", 
+					parentid: "",
+					typeid: "",
+					article: "",  
+					articleCont: "", 
+					recomList: "",
+		            keyword: "",
+		            searchObj: {
+						arctype_id:"",
+						lang: 'cn', 
+						aid: "",
+					}
+				},
+				created() {  
+			        if(sessionStorage.lang == 'en'){
+			            this.languageText = "中文";
+				 		this.indexText = "Index";
+				 		this.yourposition = "Your position";
+				 		this.lang = "en";
+					}else{
+						sessionStorage.lang == 'cn';
+					} 
+//					console.log(parseUrl());
+                    if(parseUrl()){
+//                      this.parentid = parseUrl().parentid?parseUrl().parentid:''; 
+//                      this.typeid = parseUrl().typeid?parseUrl().typeid:'';
+                        this.parentid = 25; 
+                        this.typeid = 27;
+                    } 
+					this.requireData();
+			    },
+				methods: {  
+					requireData(){
+						// 导航栏
+						this.getList('navBar','home/arctypeList'); 
+						this.getList('smallNav','home/arctypeList'); 
+						// 文章详情
+						this.getList('article','home/articleDetail'); 
+			        },
+					getList(type,url,typeid){ 
+			            let that = this;
+			           	if(type=="navBar"){  
+			           		that.searchObj.arctype_id = "";
+			           	} 
+			           	if(type=="smallNav"){ 
+//			           		that.searchObj.arctype_id = parseUrl().parentid?parseUrl().parentid:'';
+			           		that.searchObj.arctype_id = 25;
+			           	}   
+			           	that.searchObj.aid = parseUrl().aid?parseUrl().aid:'';
+		           		// that.searchObj.aid = 13; 
+			            that.searchObj.lang = that.lang; 
+						$.ajax({
+							url: config.apiHost+url,
+							type: 'GET',  
+			                async: true,  
+			                data: that.searchObj,
+							dataType: 'json', 
+							success: function (ret){
+								typeof ret == "object"?'':ret=JSON.parse(ret);
+								// 发送成功 
+								if(ret.status == 'ok'){
+									var list = ret.data;
+//			                        console.log(ret);
+			                        if(type=="smallNav"){
+			                        	that[type] = list[0].childList;
+										for(var i = 0; i< that.smallNav.length; i++){
+											if(that.typeid == that.smallNav[i].id){ 
+												that.position = that.smallNav[i].typename;
+												return false;
+											}
+										}
+			                        }else if(type=="article"){ 
+			                        	 	that[type] = ret.data.detail;
+			                        	 	that.articleCont = ret.data.detail.content.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;nbsp;/g,' ').replace(/&quot;/g,'"').replace(/&amp;/g,'&');
+											that.recomList = ret.data.recomList;
+											if(ret.data.seo_title){
+												document.title = ret.data.seo_title;
+											}
+											if(ret.data.seo_description){ 
+												$("meta[name='description']").attr('content',ret.data.seo_description); 
+											}
+											if(ret.data.seo_keywords){
+												$('meta[name="keywords"]').attr('content',ret.data.seo_keywords);
+											}
+			                        }else{ 
+			                        	that[type] = list;
+			                        } 
+								}
+								else{
+									that[type] = "";
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					},
+					articleList(typeid, parentid,level) { 
+						if( parentid==9 && level==0 || parentid == 10 && level==0 ){  
+						    var url = "http://ku.hbafea.com";
+						}else if( typeid==11 || typeid == 50){           //专家人才
+						    var url = "http://ku.hbafea.com/html/index/expertTalents.html";
+						}else if( typeid==13 || typeid == 51){           //项目技术
+						    var url = "http://ku.hbafea.com/html/index/technology.html";
+						}else if( typeid==15 || typeid == 52){           //合作机构
+						    var url = "http://ku.hbafea.com/html/index/cooperativeAgency.html";
+                        }else if( typeid == 19 || typeid == 20){
+                            var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+                        }else if( typeid == 33 || typeid == 34 || typeid == 29 || typeid == 30 || typeid == 35 || typeid == 36 || typeid == 31 || typeid == 32){
+                            var url = "newsLine.html?typeid=" + typeid + "&parentid=" + parentid;
+                        }else if( typeid==21 || typeid == 22){           //国际交流培训
+						    var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}else if( typeid==23 || typeid == 24){           //名师讲堂
+						    var url = "teacherLectureList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}else{
+							var url = "newsList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}   
+					 	location.href = url;
+					 	//window.open(url);
+					},
+					articleDetail(aid){ 
+					 	var url = "expertsElegantDetail.html?aid="+ aid+ "&typeid="+ this.typeid + "&parentid="+ this.parentid;
+					 	location.href = url;
+					},
+					// 中英文切换
+                    changeLang(){
+                        this.lang == "en"?sessionStorage.lang = "cn":sessionStorage.lang = "en";  
+						location.href = "../../index.html";
+                    },
+                    searchFun() {
+			            var url = "search.html?keywords=" + this.keyword + '&typeid=' + parseUrl().typeid + '&parentid=' + parseUrl().parentid;
+                        window.open(url);
+                    },
+				},
+				filters: {
+					getDate: function(str) {
+						var oDate = new Date(str*1000),
+						oYear = oDate.getFullYear(),
+						oMonth = oDate.getMonth() + 1,
+						oDay = oDate.getDate(),
+						oHour = oDate.getHours(),
+						oMin = oDate.getMinutes(),
+						oSec = oDate.getSeconds(),
+						oTime = oYear + '-' + oMonth + '-' + oDay; //最后拼接时间
+						//console.log(oTime);
+						return oTime;
+					}, 
+				},
+			});
+			$(function() {      
+				$(".gtop").on("click", function() {
+					window.scrollTo(0, 0);
+				})
+			})  
+			var bodyH = $("body").height();
+			var headerH = $(".header").height();
+			var navBarH = $(".navBar").height();
+			var footerH = $(".footer").height();
+			var bottomH = $(".bottom").height();
+			var mainH = bodyH - headerH - navBarH -footerH - bottomH - 135;  
+			$(".main").css({"min-height":mainH});
+		</script>
+	</body> 
+</html>

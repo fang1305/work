@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/home/component.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/pagination.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/jobRecommendation.css" />
+	</head>
+
+	<body>
+		<div class='container' id="app" @click="chooseType(1,'close','')">
+			<div class="header"> 
+				<div id="dl-menu" class="dl-menuwrapper"> 
+					<button id="dl-menu-button">Open Menu</button> 
+					<ul class="dl-menu">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="expertTalents.html">专家人才</a></li>
+						<li><a href="technology.html">项目技术</a></li>
+						<li><a href="cooperativeAgency.html">合作机构</a></li>
+					</ul> 
+				</div>
+				<div class="logo"><img src="../../img/home/logo.png" /></div>
+				<div class="search">
+					<img src="../../img/home/icon_search.png" alt="" />
+				</div>
+			</div>
+			<div class="poster">
+				<img src="../../img/1.png"/>
+			</div>
+			<div class="main"> 
+				<div class="top">
+					<div class="title">职位推荐<span>Job recommendation</span></div>
+					<ul>
+						<li><a href="expertTalents.html"><span>专家人才</span></a></li>
+						<li class="act"><span>职位推荐</span></li>
+					</ul> 
+				</div>
+				<div class="navigation">
+					<div class="nav-category J_filter_country">
+						<h4>全球</h4>
+						<span @click="chooseCountry('')" :class="['def',searchObj.nationality==''?'act':'']">不限</span>
+						<div class="nc-contain">
+							<span class="nctit">地区：</span>
+							<div class="country">
+								<span :class="['item',searchObj.nationality==country.nationality?'act':'']" @click="chooseCountry(country.nationality)" v-for="country in countrys">{{country.nationality}} </span>
+							</div>
+						</div>
+					</div>
+					<div class="nav-category J_filter_sel"> 
+					    <div class="nav-tab profession">
+					        <div :class="['input',choose.industry.actHide?'act':'']" @click.stop="chooseType(1,'choose','industry')">
+					            <span>{{choose.industry.typeVal}}</span>
+					        	<i @click.stop="chooseType('','error','industry')" :class="['iconfont', choose.industry.errorHide?'hide':'', 'icon-error']"></i>
+					            <img :class="[choose.industry.errorHide?'':'hide']" src="../../img/index/icon/icon_arrow.png" alt="">
+					        </div>
+					        <div :class="['slist', choose.industry.chooseHide?'hide':'']">
+					        	<div class="sinput" @click.stop="chooseType('','choose','industry')">
+						            <span>{{choose.industry.typeVal}}</span>
+						            <i class="iconfont icon-triangle-up"></i>
+						        </div>
+						        <ul>
+						            <li v-for="data in industrys" @click="chooseType(data.industry_name,data.industry_id,'industry')">{{data.industry_name}}</li>
+						        </ul>
+					        </div>
+					    </div>
+					</div>
+				</div> 
+				<div class="list">
+					<div class="item" v-for="job in jobs">
+						<a :href="'jobDetail.html?id='+job.id"> 
+						<div class="company">
+						 	<div class="poster">
+						 		<img :src="job.logo"/>
+						 	</div>
+						 	<p class="cpname">{{job.works_name}}</p>
+					 		<p class="desp">{{job.industry_name}}</p>
+						</div>
+						<div class="info">
+							<div class="job-time-salary">
+								<p class="jobname">{{job.professional}}</p>
+								<p class="time">[{{getTimeInit(job.add_time)}}发布]</p>
+								<p class="salary">{{job.low_salary}}-{{job.high_salary}}</p>
+							</div>
+							<div class="position">
+								<div class="left">
+									<p class="need">{{job.countries?job.countries+'/':''}}{{job.edu_back?job.edu_back+'/':''}}{{job.language?job.language+'':''}}</p>
+									<div class="pot">
+										<span v-for="capacity in job.capacity">{{capacity}}</span> 
+									</div>
+								</div>
+								<div class="look">查看</div>
+							</div>
+						</div>
+						</a>
+					</div>   
+				</div>
+				<div class="pages">
+					<div id="pagination"></div>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script> 
+	<script type="text/javascript" src="../../js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="../../js/jquery.dlmenu.js"></script>
+	<script type="text/javascript" src="../../js/pagination.js"></script> 
+	<script type="text/javascript" src="../../js/config.js"></script> 
+	<script type="text/javascript" src="../../js/vue.min.js"></script> 
+	<script> 
+		if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else { location.href = "../index/jobRecommendation.html";} 
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "中文", 
+				page:1,
+				countrys: [], 	// 国籍
+				industrys: [],
+				salarys:[],
+				jobs:[],
+                languages:[],
+                companyName: '',
+				searchObj:{
+					lang: 'cn',
+					limit: 6,
+					page: 1,
+					nationality: '',
+					industry_id: '',
+					language: '',
+					salary: '',
+					keywords: ''
+				},
+				choose:{
+					industry:{
+						typeVal: '行业要求',
+						chooseHide: true,
+						errorHide: true,
+						id: 0
+					},
+					salary:{
+						typeVal: '薪资要求',
+						chooseHide: true,
+						errorHide: true
+					},
+					language:{
+						typeVal: '语言要求',
+						chooseHide: true,
+						errorHide: true
+					}
+				}
+			},
+			created() {
+                if(localStorage.getItem('lang') == 'en'){
+                    this.lang = 'en';
+                    this.languageText = "English";
+                }
+                if(parseUrl()){
+                    this.searchObj.works_id = parseUrl().id?parseUrl().id:'';
+                    this.companyName = localStorage.getItem('companyName')?localStorage.getItem('companyName'):'';
+                    this.searchObj.keywords = localStorage.getItem('companyName')?localStorage.getItem('companyName'):'';
+                    localStorage.removeItem('companyName')
+                }
+                this.requireData();
+				
+			},
+			methods: { 
+                requireData(){
+                    this.getJobs(1);
+                    this.getList('industrys','home/industry');
+                    this.getList('countrys','home/nationality');
+                    this.getList('languages','home/language');
+                    this.getList('salarys','home/salary');
+                },
+                // 中英文切换
+                changeLang(){
+                    if(this.lang == 'cn'){
+                        this.lang = 'en';
+                        localStorage.setItem('lang','en');
+                        this.languageText = 'English';
+                        // 重新请求数据
+					    this.requireData();
+                    }else{
+                        this.lang = 'cn';
+                        localStorage.setItem('lang','cn');
+                        this.languageText = '中文';
+                        // 重新请求数据
+                        this.requireData();
+                    }
+                },
+				// 选择国籍
+				chooseCountry(name){
+					this.searchObj.nationality = name;
+					this.getJobs(1);
+				},
+				// 选择人才分类
+				chooseType(val,type,status){
+					let that = this;
+					if(type == 'close'){
+						// 关闭选择框
+						this.choose.industry.chooseHide = true;
+					}else if(type == 'choose'){
+						// 展开选择类型
+						this.choose[status].chooseHide = !this.choose[status].chooseHide;
+					}else if(type == 'error'){
+						status =='industry'?this.searchObj.industry_id = '':this.searchObj[status] = '';
+						this.choose[status].actHide = false;
+						this.choose[status].errorHide = true;
+						if(status == 'language'){
+							this.choose[status].typeVal = '语言要求';
+						}else if(status == 'industry'){
+							this.choose[status].typeVal = '行业要求';
+						}else{
+							this.choose[status].typeVal = '薪资要求';
+						}
+						that.getJobs(1);
+					}else{
+						// 选择完成
+						status == 'industry'?this.searchObj.industry_id = type:this.searchObj[status] = val;
+						this.choose[status].chooseHide = true;
+						this.choose[status].typeVal = val;
+						this.choose[status].errorHide = false;
+						this.choose[status].actHide = true;
+						that.getJobs(1);
+					}
+				},
+				getList(type,url){
+					let that = this;
+					$.ajax({
+						url: config.apiHost+url,
+                        type: 'POST', //GET
+                        data:{
+                            lang: that.lang
+                        },
+						async: true, //或false,是否异步
+						dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+						success: function (data, textStatus, jqXHR){
+							typeof data == "object"?'':data=JSON.parse(data);
+							// 发送成功
+							if(data.status == 'ok'){
+								that[type] = data.data;
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+				},
+				getJobs(type){
+					let that = this;
+					type?that.searchObj.page = 1:'';
+                    that.searchObj.lang = that.lang;
+                    if(that.searchObj.keywords != that.companyName || that.companyName==''){
+                        that.searchObj.works_id = '';
+                    }
+                    $.ajax({
+						url: config.apiHost+'experts/jobsList',
+						type: 'POST', //GET
+						async: true, //或false,是否异步
+						data: that.searchObj,
+						dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+						success: function (data, textStatus, jqXHR){
+							typeof data == "object"?'':data=JSON.parse(data);
+							// 发送成功
+							if(data.status == 'ok'){
+								that.searchObj.page == 1?that.createPagination(data.data.count):'';
+								var list = data.data.list;
+								that.jobs = list;
+							}else{
+								alert(data.result);
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+				},
+				createPagination(num) {
+					let that = this;
+					var container = $('#pagination');
+					var sources = function() {
+						var result = [];
+						for(var i = 1; i <= num; i++) {
+							result.push(i);
+						}
+						return result;
+					}();
+					var options = {
+						dataSource: sources,
+						pageSize:6,
+						className: 'paginationjs-theme-blue',
+						callback: function(response, pagination) {
+							//window.console && console.log(response, pagination);
+							var dataHtml = '<ul>';
+							$.each(response, function(index, item) {
+								dataHtml += '<li>' + item + '</li>';
+							});
+							dataHtml += '</ul>';
+                            container.prev().html(dataHtml);
+                            if(that.searchObj.page!=pagination.pageNumber){
+                                that.searchObj.page = pagination.pageNumber;
+                                that.getJobs();
+                            }
+						}
+					};
+					container.addHook('beforeInit', function() {
+						window.console && console.log('beforeInit...');
+					});
+					container.pagination(options);
+					container.addHook('beforePageOnClick', function(e) {
+						window.console && console.log('beforePageOnClick...');
+					});
+					return container;
+				}
+			}, 
+		});
+	$(function() {
+		$('#dl-menu').dlmenu();   
+	}) 
+	</script>
+
+</html>

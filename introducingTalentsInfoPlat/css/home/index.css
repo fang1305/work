@@ -1,0 +1,94 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;}
+.main { width: 100%; padding-bottom: .7rem;}
+.swiper-container { width: 100%; height: 100%; z-index: 1;}
+.swiper-container .swiper-slide { line-height: 0; text-align: center; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; }
+.swiper-container .swiper-slide img { width: 100%; height: auto;} 
+.block1 .info { width: 100%; height: auto; background-color: #FFF; font-size: 0; }                                                                                                                                              
+.block1 .info .item { padding: .8rem 0; display: inline-block; width: 50%; text-align: center; position: relative;}                                                                                                                                               
+.block1 .info .item:first-child::after { content: ''; width: 5.7rem; height: 1px; background: #EEEEEE; position: absolute; bottom: 0; left: .9rem;}                                                                                                                                               
+.block1 .info .item:nth-child(2)::after { content: ''; width: 1px; height: 3.95rem; background: #EEEEEE; position: absolute; top: .52rem; left: 0;}                                                                                                                                               
+.block1 .info .item .num { display: inline-block; font-size: .65rem; line-height: 1; color: #206BD1; text-align: center; position: relative;}                                                                                                                                                                                                                                                                                           
+.block1 .info .item .num .add { font-size: .27rem; line-height: 1; color: #FA6041; position: absolute; right: -0.2rem; top: -0.12rem;}                                                                                                                                              
+.block1 .info .item .num:after { content:""; clear: both; display: block;}                                                                                                                                           
+.block1 .info .item .desp { font-size: .27rem; line-height: 1; color: #999999; padding-top: .1rem;}   
+
+.block2 { padding: 0 .27rem; margin-top: -.2rem;}                                                                                                                                         
+.block2 .title { font-size: .38rem; line-height: 1; color: #206BD1; font-weight: bold;}                                                                                                                                         
+.block2 .small-title { font-size: .18rem; line-height: 1; color: #999999; padding-top: .08rem;}      
+.block2 .list { padding-top: .07rem; font-size: 0;}
+.block2 .list .item { display: inline-block; width: 3.48rem; height: auto; margin-top: .29rem; /*vertical-align: top;*/} 
+.block2 .list .item .poster { width: 100%; height: 2.68rem; margin: 0 auto; line-height: 0; text-align: center; display: -webkit-box;display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.block2 .list .item .poster img { width: auto; height: 100%; } 
+.block2 .list .item .info { padding: .22rem .27rem .22rem; border: 1px solid #EEEEEE;}
+.block2 .list .item:nth-child(2n) .info { border-left: 0;}
+.block2 .list .item .info .name { width: 100%; display: flex; display: -webkit-flex; display: -ms-flexbox; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.block2 .list .item .info .name .left { font-size: .28rem; color: #333333; line-height: 1.3; padding-right: .17rem;}
+.block2 .list .item .info .name .right { font-size: .22rem; color: #999999; line-height: 1.8;}
+.block2 .list .item .info .name:after { content:""; clear: both; display: block;} 
+.block2 .list .item .info .desp { margin-top: .13rem;}
+.block2 .list .item .info .desp .ditem { font-size: .24rem; color: #666666; line-height: 1.1; word-break: break-all;}
+.block2 .list .item .info .desp .ditem span { padding: 0 .05rem;}
+.block2 .list .item .info .desp .ditem:last-child { border-right: none;}
+.block2 .list .item .info .desp .ditem:first-child { padding-left: 0;} 
+
+.block3 { padding: 0 .27rem; padding-top: .71rem;}                                                                                                                                         
+.block3 .title { font-size: .38rem; line-height: 1; color: #206BD1; font-weight: bold;}                                                                                                                                         
+.block3 .small-title { font-size: .18rem; line-height: 1; color: #999999; padding-top: .08rem;}    
+.block3 .list {}
+.block3 .list .item { width: 100%; height: auto; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.block3 .list .item:nth-child(3n) { margin-right: 0;} 
+.block3 .list .item .info { padding: 0 .27rem .24rem;}
+.block3 .list .item .info .name { font-size: .34rem; color: #333333; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .26rem;}
+.block3 .list .item .info .desp { width: 100%; font-size: .26rem; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical; margin-top: .13rem;}
+.block3 .list .item .info .time { margin-top: .2rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.block3 .list .item .info .time .left { flex: 1; font-size: .22rem; color: #999999; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block3 .list .item .info .time .right { flex: 1; font-size: .22rem; color: #FA6041; line-height: 1.3; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block3 .list .item .info .time:after { content:""; clear: both; display: block;}  
+ 
+.block4 { padding: 0 .27rem; padding-top: .54rem;}                                                                                                                                         
+.block4 .title { font-size: .38rem; line-height: 1; color: #206BD1; font-weight: bold;}                                                                                                                                                
+.block4 .small-title { font-size: .18rem; line-height: 1; color: #999999; padding-top: .08rem;}  
+.block4 .list { font-size: 0;}
+.block4 .list .item { height: auto; padding: .27rem; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.block4 .list .item .company { display: flex; display: -webkit-flex; padding-bottom: .27rem; border-bottom: 1px solid #DCDCDC;}
+.block4 .list .item .company .poster { width: .54rem; height: .54rem; border-radius: 50%; margin-right: .11rem; float: left; line-height: 0; overflow: hidden;}
+.block4 .list .item .company .poster img { width: 100%; height: 100%;} 
+.block4 .list .item .company .cpname { flex: 1; font-size: .3rem; color: #666666; line-height: .54rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.block4 .list .item .company .desp { flex: 1; font-size: .22rem; color: #666666; line-height: .54rem; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.block4 .list .item .info .job-time-salary { font-size: .34rem; color: #333333; line-height: 1.3; padding-top: .21rem;}
+.block4 .list .item .info .job-time-salary .jobname { display: inline-block; max-width: 3.55rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block4 .list .item .info .job-time-salary .time { font-size: .22rem; line-height: 2.2; color: #999999; float: left;}
+.block4 .list .item .info .job-time-salary .salary { font-size: .34rem; color: #FA6041; line-height: 1.5; float: right;}
+.block4 .list .item .info .job-time-salary:after { content:""; clear: both; display: block;} 
+.block4 .list .item .info .position { padding-top: .13rem; display: flex; display: -webkit-flex;} 
+.block4 .list .item .info .position .left { flex: 1;} 
+.block4 .list .item .info .position .need { font-size: .26rem; color: #666666; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.block4 .list .item .info .position .pot { overflow: hidden; white-space: nowrap; padding-top: .08rem;} 
+.block4 .list .item .info .position .pot span { display: inline-block; min-width: 1rem; padding-right: .2rem; font-size: .18rem; color: #999999; line-height: 1.3;} 
+.block4 .list .item .info .position .look { float: right; width: 1.63rem; height: .63rem; background: #206BD1; font-size: .25rem; line-height: .63rem; color: #FFFFFF; text-align: center;} 
+.block4 .lookMore { width: 1.81rem; height: .54rem; border: 1px solid #206BD1; font-size: .22rem; line-height: .54rem; color: #206BD1; text-align: center; margin: 0 auto; margin-top: .27rem;} 
+ 
+.block5 { padding: 0 .27rem; padding-top: .53rem;}                                                                                                                                         
+.block5 .title { font-size: .38rem; line-height: 1; color: #206BD1; font-weight: bold;}                                                                                                                                         
+.block5 .small-title { font-size: .18rem; line-height: 1; color: #999999; padding-top: .08rem;}    
+.block5 .list {}
+.block5 .list .item { width: 100%; height: auto; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.block5 .list .item:nth-child(3n) { margin-right: 0;} 
+.block5 .list .item .info { padding: 0 .27rem .24rem;}
+.block5 .list .item .info .name { font-size: .34rem; color: #333333; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .26rem;}
+.block5 .list .item .info .belong { font-size: .18rem; color: #FA6041; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .12rem;}
+.block5 .list .item .info .desp { width: 100%; font-size: .26rem; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical; margin-top: .16rem;}
+.block5 .list .item .info .time { margin-top: .17rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.block5 .list .item .info .time .left { flex: 1; font-size: .22rem; color: #999999; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block5 .list .item .info .time .right { flex: 1; font-size: .22rem; color: #999999; line-height: 1.3; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block5 .list .item .info .time:after { content:""; clear: both; display: block;} 
+
+.block6 { padding: 0 .27rem; padding-top: .53rem;}     
+.block6 .title { font-size: .38rem; line-height: 1; color: #206BD1; font-weight: bold;}                                                                                                                                         
+.block6 .small-title { font-size: .18rem; line-height: 1; color: #999999; padding-top: .08rem;}    
+.block6 .list { font-size: 0;}
+.block6 .list .item { display: inline-block; width: 1.15rem; padding-right: .3rem; text-align: center; margin-top: .27rem;}
+.block6 .list .item:nth-child(5n) { padding-right: 0;}
+.block6 .list .item .cologo { display: inline-block; width: .54rem; height: .54rem; text-align: center; line-height: 0; overflow: hidden;}
+.block6 .list .item .cologo img { width: auto; height: 100%;}
+.block6 .list .item .name { font-size: .18rem; line-height: 1; color: #999999; padding-top: .13rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}

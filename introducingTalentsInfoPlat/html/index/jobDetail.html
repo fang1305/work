@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/footer.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />  
+		<link rel="stylesheet" type="text/css" href="../../css/index/jobDetail.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="navBar">
+			 	<div class="nav">
+					<div class="chinese" @click="changeLang">
+						<span>{{languageText}}</span>
+						<i class="iconfont icon-sanjiao_xia"></i>
+					</div>
+					<div class="avatar"><img src="../../img/index/icon/avator.png" /> </div> 
+					 <ul class="nav-list">
+                        <li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+                        <li class="act"><a href="./expertTalents.html"><span>专家人才</span></a></li>
+                        <li><a href="./technology.html"><span>项目技术</span></a></li>
+                        <li><a href="./cooperativeAgency.html"><span>合作机构</span></a></li>
+					</ul> 
+				</div>
+			</div>
+			<div class="header">
+				<div class="cont">
+				 	<div class="left">
+				 		<p class="name" v-text="detail.professional"></p>
+				 		<div class="desp">
+				 			<span class="item" v-text="detail.low_salary+'-'+detail.high_salary"><span>/</span></span>
+				 			<span class="item" v-if="detail.work_place" v-text="'/'+detail.work_place" ></span>
+				 			<span class="item" v-if="detail.work_years" v-text="'/'+detail.work_years" ></span>
+				 			<span class="item" v-if="detail.edu_back" v-text="'/'+detail.edu_back" ></span>
+				 			<span class="item" v-if="detail.language" v-text="'/'+detail.language" ></span>
+				 			<!-- <span class="item"><span>/</span>经验3-5年</span>
+				 			<span class="item"><span>/</span>本科及以上</span>
+				 			<span class="item"><span>/</span>汉语</span> -->
+				 		</div>
+				 		<div class="other">
+				 			<span v-for="capacity in detail.capacity" v-text="capacity"></span>
+				 		</div>
+				 		<p class="time" v-text="getDateInit(detail.add_time)+'发布'"></p>
+				 	</div>
+				 	<div class="applyCooperation" @click="applyPerson">投递简历</div>
+				</div> 
+			</div>
+			<div class="main">
+				<div class="left">
+					<div class="projectIntro">
+						<div class="title">公司福利</div>
+						<div class="content" v-text="detail.welfare+''"></div>
+					</div>
+					<div class="projectIntro">
+						<div class="title">职位描述</div>
+						<div class="content" v-html="detail.positom_detail"> 
+						</div>
+					</div>
+				</div>
+				<div class="right">
+				 	<div class="company">
+						<a target="_blank" :href="'./companyIntro.html?id='+detail.works_id">
+							<div class="logo-name">
+								<img :src="detail.logo" alt="" />
+								<p class="name" v-text="detail.works_name"></p>
+							</div>
+						</a>
+				 	 	<div class="list">
+				 	 		<div class="item">
+				 				<i class="iconfont icon-fenleishouye"></i>
+				 				<span v-text="detail.industry_name"></span>
+				 			</div>
+				 			<div class="item">
+				 				<i class="iconfont icon-ren"></i>
+				 				<span v-text="(detail.number?detail.number:'0')+'人'"></span>
+				 			</div>
+				 	 	</div>
+				 	</div>
+				 	<div class="recommendJob">
+				 		<div class="title">
+				 			<span>推荐职位</span>
+							<hr class="line" />
+				 		</div>
+				 		<div class="list">
+				 			<a :href="'jobDetail.html?id='+job.id" v-for="job in recommends"><div class="item">
+				 				<img :src="job.logo" alt="" />
+				 				<div class="jobInfo">
+				 					<div class="name-salary">
+					 					<p class="name">{{job.professional}}</p>
+								        <p class="salary" v-text="job.low_salary+(job.low_salary&&job.high_salary?'-':'')+job.high_salary"></p>
+					 				</div>
+					 				<div class="country-time">
+								        <p class="country">{{job.countries+''?job.countries+'/':''}}{{job.edu_back}}{{job.language?'/'+job.language:''}}</p>
+                                        <p class="time">[{{getTimeInit(job.add_time)}}发布]</p>
+					 				</div>
+				 				</div>
+                             </div></a>
+				 			<!-- <div class="item">
+				 				<img src="../../img/index/co1.jpg" alt="" />
+				 				<div class="jobInfo">
+				 					<div class="name-salary">
+					 					<p class="name">高级测试工程师高级测试工程师</p>
+					 					<p class="salary">12K-14K</p>
+					 				</div>
+					 				<div class="country-time">
+					 					<p class="country">美国/本科/英语</p>
+					 					<p class="time">[11-10发布]</p>
+					 				</div>
+				 				</div>
+				 			</div> -->
+				 		</div>
+				 	</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="wrap">
+					<div class="left">
+						<p>支持单位: 河北省外国专家局</p>
+						<p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+						<p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+					</div>
+					<div class="right">
+						<img class="code" src="../../img/index/icon_code.jpg" alt="" />
+						<div class="contact-us">
+							<p>联系我们</p>
+							<div class="email">
+								<img src="../../img/index/icon/icon_email.png" />
+								<span>service@hbafea.com</span>
+							</div>
+							<div class="email">
+								<img src="../../img/index/icon/icon_telphone.png" />
+								<span>0311-85111217(8:30-17:30)</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="cont">
+					<a href=""><span>关于我们</span></a> <span>|</span> <a href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.js"></script>    
+		<script type="text/javascript" src="../../js/vue.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script>
+			if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				location.href = "../home/jobDetail.html?id="+parseUrl().id;
+			} else {} 
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					indexText: "首页",
+					lang: "cn",
+					languageText: "English",
+                    detail: {} ,
+                    recommends:[]
+				},
+				created() {
+                    if(localStorage.getItem('lang') == 'en'){
+                        this.lang = 'en';
+                        this.languageText = "中文";
+                    }
+					this.getDetail();
+				},
+				methods: { 
+                    // 中英文切换
+                    changeLang(){
+                        if(this.lang == 'cn'){
+                            this.lang = 'en';
+                            localStorage.setItem('lang','en');
+                            this.languageText = '中文';
+                            // 重新请求数据
+                            this.getDetail();
+                        }else{
+                            this.lang = 'cn';
+                            localStorage.setItem('lang','cn');
+                            this.languageText = 'English';
+                            // 重新请求数据
+                            this.getDetail();
+                        }
+                    },
+                    // 投递简历
+                    applyPerson(){
+                        let that = this;
+                        if(!localStorage.getItem('apply_id')){
+                            window.open('./login.html')
+                        }else if(localStorage.getItem('apply_id') && confirm('您确定要投递简历吗?')){
+                            $.ajax({
+                                url: config.apiHost+'apply/applyExperts',
+                                type: 'POST', //GET
+                                async: true, //或false,是否异步
+                                data: {
+                                    beapply_id: parseUrl().id,
+                                    apply_id: localStorage.getItem('apply_id'),
+                                    type: 2
+                                },
+                                dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+                                success: function (data, textStatus, jqXHR){
+                                    typeof data == "object"?'':data=JSON.parse(data);
+                                    // 发送成功
+                                    // console.log(data)
+                                    alert(data.result);
+                                },
+                                error: function (xhr, textStatus){
+                                    // 发送失败
+                                    console.log('错误')
+                                    console.log(xhr)
+                                    console.log(textStatus)
+                                },
+                            })
+                        }
+                    },
+                    // 获取推荐职位
+                    getRecommend(id){
+                        let that = this;
+						$.ajax({
+							url: config.apiHost+'experts/jobsHomeList',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: {
+                                lang: that.lang,
+                                limit: 3,
+								works_id: id
+							},
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								if(data.status == 'ok'){
+								    console.log(data.data.list)
+                                    that.recommends = data.data;
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+                    },
+					getDetail(){
+						let that = this;
+						$.ajax({
+							url: config.apiHost+'experts/jobsDetail',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: {
+                                lang: that.lang,
+								id: parseUrl().id
+							},
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								// 发送成功
+								if(data.status == 'ok'){
+								    console.log(data.data.list)
+                                    that.detail = data.data;
+                                    that.getRecommend(data.data.works_id);
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					}
+				}, 
+			}); 
+		</script>
+	</body>
+
+</html>

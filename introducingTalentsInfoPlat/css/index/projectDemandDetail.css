@@ -1,0 +1,39 @@
+.header { width: 100%; background: #EEEEEE;}
+.header .cont { width: 1200px; margin: 0 auto; padding-bottom: 49px; }
+.header .cont .left { float: left;}
+.header .cont .left .name { font-size: 36px; line-height: 1; color: #333333; padding-top: 46px;}
+.header .cont .left .desp { font-size: 24px; line-height: 1; color: #666666; padding-top: 18px;}
+.header .cont .left .desp span { padding-right: 30px;}
+.header .cont .left .time { font-size: 18px; line-height: 1; color: #999999; padding-top: 28px;}
+.header .cont .applyCooperation { width: 160px; height: 60px; background-color: #206BD1; font-size: 24px; line-height: 60px; color: #FFF; margin-top: 54px; text-align: center; float: right; cursor: pointer;}
+.header .cont:after { content:""; clear: both; display: block;} 
+
+.main { width: 1200px; margin: 0 auto; padding-top: 12px; padding-bottom: 80px; display: flex; display: -webkit-flex; display: -ms-flexbox;} 
+.main .left { flex: 1; width: 803px; margin-right: 48px;}
+.main .left .target .title { font-size: 24px; line-height: 1; color: #333333; padding-top: 38px; padding-top: 38px;}
+.main .left .target .content { font-size: 18px; line-height: 1; color: #666666; padding-top: 28px;} 
+.main .left .have .title { font-size: 24px; line-height: 1; color: #333333; padding-top: 38px; padding-top: 38px;}
+.main .left .have .content { font-size: 18px; line-height: 1; color: #666666; padding-top: 28px;}
+.main .left .have .content span { display: inline-block; width: 213px; padding-right: 10px;}
+.main .left .projectIntro .title { font-size: 24px; line-height: 1; color: #333333; padding-top: 38px; padding-top: 38px;}
+.main .left .projectIntro .content { font-size: 18px; line-height: 1.7; color: #666666; padding-top: 25px;} 
+.main .left .projectIntro .content p { font-size: 18px !important; color: #666666 !important;}
+.main .left .projectIntro .content span { font-size: 18px !important; color: #666666 !important;}
+
+.main .right { width: 350px;} 
+.main .right .title { font-size: 24px; line-height: 1; color: #333333; padding-top: 38px;} 
+.main .right .list { } 
+.main .right .list .item { margin-top: 30px;} 
+.main .right .list .item .name { height: 50px; padding: 0 29px; font-size: 20px; line-height: 50px; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border: 1px solid #EEEEEE;} 
+.main .right .list .item .info { padding: 0 29px 27px; box-shadow:0px 2px 5px 0px rgba(0,70,141,0.15);} 
+.main .right .list .item .info .desp { height: 50px; font-size: 14px; color: #666666; line-height: 1.7; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;  line-clamp: 2; -webkit-box-orient: vertical; padding-top: 15px;} 
+.main .right .list .item .info .time { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .right .list .item .info .time .ileft { font-size: 14px; color: #999999; line-height: 1.3; width: 144px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.main .right .list .item .info .time .iright { font-size: 12px; color: #FA6041; line-height: 1.5; width: 144px; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.main .right .list .item .info .time:after { content:""; clear: both; display: block;}  
+.main .right .list .item:hover .name { color: #206BD1; border: 1px solid #206BD1;} 
+.main .right .list .item:hover .info { background: #206BD1;} 
+.main .right .list .item:hover .info .desp { color: #FFF;} 
+.main .right .list .item:hover .info .desp { color: #FFF;} 
+.main .right .list .item:hover .info .time .ileft { color: #FFF;} 
+.main .right .list .item:hover .info .time .iright { color: #FFF;} 

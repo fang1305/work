@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/home/component.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/home/talentDetail.css" />
+	</head>
+
+	<body>
+		<div class='container' id="app">
+			<div class="header"> 
+				<div id="dl-menu" class="dl-menuwrapper"> 
+					<button id="dl-menu-button">Open Menu</button> 
+					<ul class="dl-menu">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="expertTalents.html">专家人才</a></li>
+						<li><a href="technology.html">项目技术</a></li>
+						<li><a href="cooperativeAgency.html">合作机构</a></li>
+					</ul> 
+				</div>
+				<div class="logo"><img src="../../img/home/logo.png" /></div>
+				<div class="search">
+					<img src="../../img/home/icon_search.png" alt="" />
+				</div>
+			</div>
+			<div class="main"> 
+				<div class="info">
+					<div class="picture">
+				 	 	<img :src="detail.photo" alt="" />
+				 	</div>
+			 	 	<div class="name-edu">
+			 	 	 	<p class="name">{{detail.surname+detail.name}}({{detail.age}}岁)</p>
+			 	 	 	<p class="job">{{detail.industry_name}}</p>
+			 	 	 	<div class="edu">{{detail.type}}</div>
+			 	 	</div>
+			 	 	<p class="country"> 
+			 	 		<span class="item" v-if="detail.nationality">{{detail.nationality}}<span> |</span></span>
+			 	 		<span class="item" v-if="detail.industry_name">{{detail.industry_name}}<span> |</span></span>
+			 	 		<span class="item" v-if="detail.language">{{detail.language+''}}<span> |</span></span>
+			 	 		<span class="item" v-if="detail.degree">{{detail.degree}}<span> |</span></span> 
+			 	 	<div class="other">
+			 	 		<p>宗教信仰/民族：{{detail.national}}</p>
+			 	 		<p>饮食习惯:{{detail.habits}}</p>
+			 	 		<p>健康状况：{{detail.health}}</p>
+			 	 	</div>
+			 		<div class="apply">申请</div>
+			 	</div>
+			 	<div class="intentionJob">
+					<div class="title">意向职位</div>
+					<div class="jobInfo" v-if="detail.intention_position">
+						<div class="name-pxperience">
+							<p class="name">{{detail.intention_position}} <span v-if="detail.intention_nationality">[{{detail.intention_nationality+''}}]</span></p>
+							<p class="pxperience">{{detail.work_experience}}/{{detail.type}}/{{detail.language+''}}</p>
+						</div>
+						<p class="salary" v-text="detail.expected_salary"></p>
+					</div>
+				</div>
+				<div class="intentionProfession">
+					<div class="title">意向行业</div>
+					<div class="list">
+						<div class="item" v-if="intention" v-for="intention in detail.intention_industry">{{intention}}</div>
+					</div>
+				</div>
+				<div class="intro">
+					<div class="title">个人介绍</div>
+					<div class="content">{{detail.info?detail.info:'暂无个人介绍'}}</div>
+				</div>
+				<div class="talentRecommend">
+					<div class="title">人才推荐</div>
+					<div class="list"> 
+						<div class="item" v-for="expert in experts">
+							<a :href="'talentDetail.html?id='+expert.id">
+							<div class="poster">
+								<img :src="expert.photo"/>
+							</div>
+							<div class="info">
+								<div class="name">
+									<div class="left">{{expert.name}}({{expert.age}}岁)</div>
+									<div class="right">{{expert.type}}</div>
+								</div> 
+								<div class="desp"><span v-if="expert.degree" class="ditem">{{expert.degree}}<span>|</span></span><span v-if="expert.nationality" class="ditem">{{expert.nationality}}<span>|</span></span><span v-if="expert.industry_name" class="ditem">{{expert.industry_name}}<span>|</span></span><span v-if="expert.language+''" class="ditem">{{expert.language+''}}<span>|</span></span><span v-if="expert.marriage" class="ditem">{{expert.marriage}}</span>
+								</div>
+							</div> 
+							</a> 
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>  
+	<script type="text/javascript" src="../../js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="../../js/jquery.dlmenu.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script> 
+	<script type="text/javascript" src="../../js/vue.min.js"></script> 
+	<script>  
+		if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else { location.href = "../index/talentDetail.html?id="+parseUrl().id;} 
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "中文", 
+				detail: {},
+				searchObj:{
+					lang: 'cn',
+					limit: 4,
+					page: 1, 
+					industry_id: ''
+				},
+				experts: {}
+			},
+			created() {
+                if(localStorage.getItem('lang') == 'en'){
+                    this.lang = 'en';
+                    this.languageText = "English";
+                }
+				this.getDetail();
+				this.getExperts();
+			},
+			methods: { 
+                // 中英文切换
+                changeLang(){
+                    if(this.lang == 'cn'){
+                        this.lang = 'en';
+                        localStorage.setItem('lang','en');
+                        this.languageText = 'English';
+                        // 重新请求数据
+                        this.getDetail();
+                    }else{
+                        this.lang = 'cn';
+                        localStorage.setItem('lang','cn');
+                        this.languageText = '中文';
+                        // 重新请求数据
+                        this.getDetail();
+                    }
+                },
+				getDetail(){
+					let that = this;
+					$.ajax({
+						url: config.apiHost+'experts/expertdetail',
+						type: 'POST', //GET
+						async: true, //或false,是否异步
+						data: {
+                            lang: that.lang,
+							id: parseUrl().id
+						},
+						dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+						success: function (data, textStatus, jqXHR){
+							typeof data == "object"?'':data=JSON.parse(data);
+							// 发送成功
+							console.log(data)
+							if(data.status == 'ok'){
+								that.detail = data.data;
+								that.searchObj.industry_id = data.data.industry_id;
+							}else{
+								alert(data.result);
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+				},
+				// 获取推荐人才
+                getExperts(){
+                    let that = this;
+                    that.searchObj.lang = that.lang;
+					$.ajax({
+						url: config.apiHost+'experts/expertlist',
+						type: 'POST', //GET
+						async: true, //或false,是否异步
+						data: that.searchObj,
+						dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+						success: function (data, textStatus, jqXHR){
+							typeof data == "object"?'':data=JSON.parse(data);
+							// 发送成功
+							if(data.status == 'ok'){
+							    console.log(data.data)
+                                that.experts = data.data.list;
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+                },
+			}, 
+		});
+		$(function() {
+			$('#dl-menu').dlmenu();
+		})
+	</script>
+
+</html>

@@ -1,0 +1,25 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;}
+.main { padding: .27rem;}
+
+.list { width: 100%; /*height: .72rem;*/ font-size: 0; /*overflow-x: scroll; overflow-y: hidden; white-space:nowrap; text-align: center;*/}
+.list .item { display: inline-block; width: 2.1rem; padding: 0 .1rem; height: .7rem; border: 1px solid #00468C; font-size: .32rem; color: #00468C; line-height: .72rem; text-align: center; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.list .item:last-child { border-right: 1px solid #00468C;}
+.list .item.act { background-color: #00468C; color: #fff;}
+
+.news-detail { width: 100%;}
+.news-detail .name { font-size: .32rem; line-height: 1.7; color: #333333; padding-top: .28rem; font-weight: bolder;}
+.news-detail .time-view { font-size: .18rem; line-height: 1; color: #666666; padding-top: .24rem;}
+.news-detail .time-view .time { padding-right: .2rem;}
+.news-detail .time-view .from { color: #333333; padding-right: .2rem;}
+.news-detail .time-view .view { float: right;}
+.news-detail .time-view .view .iconfont { font-size: .2rem;} 
+.news-detail .newsCont { font-size: .27rem; line-height: 1.8; color: #666666; padding-top: .28rem;}
+.news-detail .newsCont p { font-size: .27rem !important; padding: .26rem 0;}
+.news-detail .newsCont span { font-size: .27rem !important;}
+.news-detail .newsCont img { width: 100% !important; height: auto;}
+.news-detail .page { margin-top: .29rem; display: flex; display: -webkit-flex;}
+.news-detail .page .prev { width: 3.38rem; padding-right: .1rem; font-size: .28rem; line-height: 1.3; color: #333; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;} 
+.news-detail .page .next { width: 3.38rem; padding-left: .1rem; font-size: .28rem; line-height: 1.3; color: #333; text-align: right; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+ 
+.swiper-slide { line-height: 0;}
+.swiper-pagination { width: auto; position: absolute; bottom: .24rem !important; color: #FFF; text-align: right !important; right: .26rem;}

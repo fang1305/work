@@ -1,0 +1,17 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;} 
+.main { padding: .27rem;}
+
+.list { width: 100%; /*height: .72rem;*/ font-size: 0; /*overflow-x: scroll; overflow-y: hidden; white-space:nowrap; text-align: center;*/}
+.list .item { display: inline-block; width: 2.1rem; padding: 0 .1rem; height: .7rem; border: 1px solid #00468C; font-size: .32rem; color: #00468C; line-height: .72rem; text-align: center; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.list .item:last-child { border-right: 1px solid #00468C;}
+.list .item.act { background-color: #00468C; color: #fff;}
+
+.news-list {}
+.news-list .news { padding: .28rem; margin-top: .27rem; border:1px solid rgba(203,203,203,1);} 
+.news-list .news .name { font-size: .33rem; line-height: 1.3; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.news-list .news .flex-def { display: flex; display: -webkit-flex; display: -ms-flexbox; margin-top: .26rem;}
+.news-list .news .flex-def .poster { width: 1.2rem; height: 1.2rem; margin-right: .26rem;}
+.news-list .news .flex-def .poster img { width: 100%; height: 100%;}
+.news-list .news .flex-def .desp { margin-top: -.1rem; flex: 1; font-size: .27rem; line-height: 1.7; color: #666666; word-break: break-all;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical; }
+.news-list .news .invite-btn .time { font-size: .22rem; line-height: 1; color: #999999; text-align: right; margin-top: .17rem;}
+.news-list .news .invite-btn .btn { width: 100%; height: .72rem; border-radius: 3px; background: #00468C; font-size: .22rem; line-height: .72rem; color: #FFF; text-align: center; margin-top: .18rem;}

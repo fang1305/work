@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/footer.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />  
+		<link rel="stylesheet" type="text/css" href="../../css/index/companyIntro.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index/companyProject.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index/companyRequirement.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="navBar">
+			 	<div class="nav">
+					<div class="chinese" @click="changeLang">
+						<span>{{languageText}}</span>
+						<i class="iconfont icon-sanjiao_xia"></i>
+					</div>
+					<!--<div class="avatar"><img src="../../img/index/icon/avator.png" /> </div>--> 
+					<div class="avatar"><a href="login.html"><img src="../../img/index/icon/avator.png" /></a> </div> 
+					 <ul class="nav-list">
+                         <li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+                         <li><a href="./expertTalents.html"><span>专家人才</span></a></li>
+                         <li><a href="./technology.html"><span>项目技术</span></a></li>
+                         <li class="act"><a href="./cooperativeAgency.html"><span>合作机构</span></a></li>
+					</ul> 
+				</div>
+			</div>
+			<div class="header">
+				<div class="top">
+				 	<div class="cologo">
+				 		<img :src="detail.logo" alt="" />
+				 	</div>
+				 	<div class="info">
+				 		<p class="name" v-text="detail.works_name"></p>
+				 		<div class="country">
+				 			<span v-text="detail.nationality"></span>
+				 			<span v-text="detail.industry_name"></span>
+				 		</div>
+				 		<ul>
+				 			<li>
+				 				<p class="num" v-text="count.projectDemandCount?count.projectDemandCount:0+'个'">个</p>
+				 				<p class="text">发布项目</p>
+				 			</li>
+				 			<li>
+				 				<p class="num" v-text="count.jobsCount?count.jobsCount:0+'个'">个</p>
+				 				<p class="text">发布职位</p>
+				 			</li>
+				 		</ul>
+				 	</div>
+				 	<p class="time">成立时间：{{detail.found_time}}</p>
+				</div>
+				<ul class="navlist">
+					<li :class="['item',activeNum==1?'act':'']"  @click="changeTab(1)">公司主页</li>
+					<li :class="['item',activeNum==2?'act':'']" @click="changeTab(2)">需求发布（{{ count.needCount?count.needCount:0 }}）</li>
+					<li :class="['item',activeNum==3?'act':'']" @click="changeTab(3)">资源共享（{{ count.supplyCount?count.supplyCount:0 }}）</li>
+				</ul>
+			</div>
+			<div class="main block1" v-if="activeNum == 1">
+				<div class="left">
+					<div class="title">
+						<span>公司介绍</span>
+						<hr class="line" />
+					</div>
+					<div class="cont" v-html="detail.info"></div>
+				</div>
+				<div class="right">
+				 	<div class="coInfo">
+				 		<div class="title">
+				 			<span>公司基本信息</span>
+							<hr class="line" />
+				 		</div>
+				 		<div class="list">
+				 			<div class="item">
+				 				<i class="iconfont icon-weizhi"></i>
+				 				<span v-text="detail.nationality"></span>
+				 			</div>
+				 			<div class="item">
+				 				<i class="iconfont icon-fenleishouye"></i>
+				 				<span v-text="detail.industry_name"></span>
+				 			</div>
+				 			<div class="item">
+				 				<i class="iconfont icon-ren"></i>
+				 				<span v-text="detail.number?detail.number+'人':'0人'"></span>
+				 			</div>
+				 		</div>
+				 	</div>
+				 	<div class="welfare">
+				 		<div class="title">
+				 			<span>公司福利</span>
+							<hr class="line" />
+				 		</div>
+				 		<div class="list">
+				 			<div class="item" v-if="welfare" v-for="welfare in detail.welfare">{{welfare}}</div>
+				 		</div>
+				 	</div>
+				</div>
+			</div>
+			<div class="main block2" v-if="activeNum == 2">
+				<div class="left">
+					<div class="title">
+						<span>职位招聘</span>
+						<hr class="line" />
+					</div>
+					<div class="list">
+						<a target="_blank" :href="'./jobDetail.html?id='+job.works_id"  v-for="job in jobs"><div class="item">
+							<div class="job-salary">
+								<div class="job" v-text="job.professional+(job.countries+''?' ['+job.countries+']':'')"></div>
+								<div class="salary" v-text="job.low_salary+(job.low_salary&&job.high_salary?'-':'')+job.high_salary"></div>
+							</div>
+							<div class="need-time">
+								<div class="need">{{job.capacity+''?job.capacity+'/':''}}{{job.edu_back}}{{job.language?'/'+job.language:''}}</div>
+								<div class="time">{{getDateInit(job.add_time)}}</div>
+							</div>
+                        </div></a>
+					</div>
+					<div class="more"><a target="_blank" :href="'./jobRecommendation.html?id='+id"><span>查看更多</span></a></div>
+				</div>
+				<div class="right">
+						<div class="title">
+						<span>需求发布</span>
+						<hr class="line" />
+					</div>
+					<div class="list">
+						<a  target="_blank" :href="'./projectDemandDetail.html?id='+project.id"  v-for="project in projectsDemand"><div class="item">
+							<div class="name" v-html="project.jane_title"></div>
+							<div class="desp" v-if="project.info" v-html="project.info"></div>
+							<div class="time">
+								<div class="tleft" v-if="project.address" v-text="project.address"></div>
+								<div class="tright" v-if="project.science" v-text="project.science"></div>
+							</div>
+						</div></a> 
+					</div>
+					<div class="more"><a target="_blank" :href="'./technologyDemand.html?id='+id"><span>查看更多</span></a></div>
+					<!-- <div class="more" v-if="proDemandCount"><span>查看更多</span></div> -->
+				</div>
+			</div>
+			<div class="main block3" v-if="activeNum == 3">
+				<div class="left">
+					<div class="title">
+						<span>公司人才</span>
+						<hr class="line" />
+					</div>
+					<div class="list">
+						<div class="item" v-for="expert in experts">
+							<a target="_blank" :href="'talentDetail.html?id='+expert.id">
+							<div class="avator">
+								<img :src="expert.photo"/>
+							</div>
+							<div class="info">
+								<p class="name" v-text="expert.surname+expert.name+(expert.age?'('+expert.age+')':'')"></p>
+                                <!--<span v-if="expert.degree" class="ditem"></span>
+                                <span v-if="expert.nationality" class="ditem">{{expert.nationality}}</span>
+                                <span v-if="expert.industry_name" class="ditem">{{expert.industry_name}}</span>
+                                <span v-if="expert.language+''" class="ditem">{{expert.language+''}}</span>
+                                <span v-if="expert.marriage" class="ditem">{{expert.marriage}}</span>-->
+                                <p class="educationalbg">{{expert.degree?expert.degree+' | ':''}}{{expert.nationality?expert.nationality:''}}{{expert.industry_name?' | '+expert.industry_name:''}}
+                                   {{expert.language+''?' | '+expert.language:''}}{{expert.marriage?' | '+expert.marriage:''}}
+                                   </p>
+							</div>
+							<p class="specialist" v-if="expert.type" v-text="expert.type"></p>
+							</a>
+						</div>
+					</div>
+					<div class="more"><a target="_blank" :href="'./expertTalents.html?id='+detail.id"><span>查看更多</span></a></div>
+				</div>
+				<div class="right">
+				 	<div class="title">
+						<span>公司项目</span>
+						<hr class="line" />
+					</div>
+					<div class="list">
+                        <a  target="_blank" :href="'./projectDetail.html?id='+project.id"  v-for="project in projects"><div class="item">
+							<div class="name" v-html="project.jane_title"></div>
+							<div class="desp" v-if="project.info" v-html="project.info"></div>
+							<div class="time">
+								<div class="tleft" v-if="project.address||project.release_time" v-text="(project.nationality_name?project.nationality_name+'：':'')+project.release_time.substring(0,10)"></div>
+								<div class="tright" v-if="project.industry_name" v-text="project.industry_name"></div>
+							</div>
+						</div></a>
+						<!-- <div class="item">
+							<div class="name">水电基地为拉脱维亚里加项目</div>
+							<div class="desp">每年7月下旬，美丽的小城Oshkosh，都会迎来超过1万多架飞机、50多万观众、800多家航空制造商同时还会举行超过1000场丰富多彩的通用航空普及教育。</div>
+							<div class="time">
+								<div class="tleft">英国：2016-12-07</div>
+								<div class="tright">核心技术</div>
+							</div>
+						</div> -->
+					</div>
+					<div class="more"><a target="_blank" :href="'./technology.html?id='+id"><span>查看更多</span></a></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="wrap">
+					<div class="left">
+						<p>支持单位: 河北省外国专家局</p>
+						<p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+						<p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+					</div>
+					<div class="right">
+						<img class="code" src="../../img/index/icon_code.jpg" alt="" />
+						<div class="contact-us">
+							<p>联系我们</p>
+							<div class="email">
+								<img src="../../img/index/icon/icon_email.png" />
+								<span>service@hbafea.com</span>
+							</div>
+							<div class="email">
+								<img src="../../img/index/icon/icon_telphone.png" />
+								<span>0311-85111217(8:30-17:30)</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="cont">
+					<a href=""><span>关于我们</span></a> <span>|</span> <a href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.js"></script>    
+		<script type="text/javascript" src="../../js/vue.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script>
+			if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				location.href = "../home/companyIntro.html?id="+parseUrl().id;
+			} else {} 
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					indexText: "首页",
+					lang: "cn",
+                    languageText: "English", 
+                    id: 0,
+					detail:{},
+                    count: {},
+                    projectsDemand: [],
+                    projects: [],
+                    experts: [],
+                    jobs: [],
+                    expertCount: 0,
+                    proCount: 0,
+                    jobCount: 0,
+                    jobPage: 1,
+                    proDemandCount: 0,
+                    activeNum: 1,
+				},
+				created() {
+                    this.id = parseUrl().id;
+                    if(localStorage.getItem('lang') == 'en'){
+                        this.lang = 'en';
+					    this.languageText = "中文";
+                    }
+					this.getDetail();
+				},
+				methods: { 
+                    changeTab(num,type){
+                        this.activeNum = num;
+                        if(num == 2 && ((this.proDemandCount=='0' && this.jobCount == '0') || type)){
+                            // 查看需求发布
+                            this.getProject('project/projectDemandHomeList','projectsDemand','proDemandCount',1);
+                            // 职位列表
+                            this.getProject('experts/jobsList','jobs','jobCount',1);
+                        }else if(num == 3&& ((this.proCount =='0' && this.expertCount == '0') || type)){
+                            // 获取公司项目
+                            this.getProject('project/projectHomeList','projects','proCount',1);
+                            // 获取公司人才列表
+                            this.getProject('experts/expertlist','experts','expertCount',1)
+                        }
+                    },
+                    // 查看更多
+                    jobsMore(){
+                        this.jobPage = this.jobPage+1;
+                        this.getProject('experts/jobsList','jobs','jobCount',this.jobPage);
+                    },
+                    // 中英文切换
+                    changeLang(){
+                        if(this.lang == 'cn'){
+                            this.lang = 'en';
+                            localStorage.setItem('lang','en');
+                            this.languageText = '中文';
+                            // 重新请求数据
+                            this.getDetail();
+                            this.changeTab(this.activeNum,1);
+                        }else{
+                            this.lang = 'cn';
+                            localStorage.setItem('lang','cn');
+                            this.languageText = 'English';
+                            // 重新请求数据
+                            this.getDetail();
+                            this.changeTab(this.activeNum,1);
+                        }
+                    },
+                    // 获取项目需求列表
+                    getProject(url,type,count,page){
+                        let that = this;
+                        $.ajax({
+							url: config.apiHost+url,
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: {
+                                lang: that.lang,
+                                limit: 4,
+                                page: page,
+								works_id: parseUrl().id
+							},
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								// 发送成功
+								if(data.status == 'ok'){
+                                    that[type] = page = 1?data.data.list:that[type].concat(data.data.list);
+                                    that[count] = data.data.count;
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+                    },
+					getDetail(){
+						let that = this;
+						$.ajax({
+							url: config.apiHost+'works/worksDetail',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: {
+                                lang: that.lang,
+								id: parseUrl().id
+							},
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								if(data.status == 'ok'){
+                                    console.log(data.data.info)
+                                    localStorage.setItem('companyName',data.data.info.works_name);
+									data.data.info.found_time = data.data.info.found_time.substring(0,10);
+									that.detail = data.data.info;
+									that.count = data.data.count;
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					}
+				}, 
+            });
+        
+			$(function(){ 
+			}) 
+		</script>
+	</body>
+
+</html>

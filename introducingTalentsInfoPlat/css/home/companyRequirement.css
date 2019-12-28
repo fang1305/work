@@ -1,0 +1,53 @@
+.main { padding-bottom: .5rem;}
+.main .top { width: 100%; padding: .26rem 0 .5rem; border: 1px solid #DFDFDF; position: relative;}
+.main .top .cologo { width: 1.46rem; height: 1.2rem; line-height: 0; float: left; text-align: center; margin-left: .45rem; margin-right: .44rem; overflow: hidden;}
+.main .top .cologo img { width: auto; height: 100%;}
+.main .top .info { float: left;}
+.main .top .info .name { font-size: .33rem; line-height: 1; color: #333333; font-family: "SourceHanSansCN-Regulars"; font-weight: bold;}
+.main .top .info .country { font-size: .22rem; line-height: 1; color: #999999; padding-top: .17rem;}
+.main .top .info .country .iconfont { font-size: .2rem; line-height: 1; color: #999999; padding-top: .09rem;}
+.main .top .info .country span { padding-right: .18rem;}
+.main .top .info ul { height: .53rem; margin-top: .26rem;}
+.main .top .info ul li { padding: 0 .17rem; text-align: center; border-right: 1px solid #DFDFDF; float: left;}
+.main .top .info ul li:first-child { padding-left: 0;}
+.main .top .info ul li:last-child { border-right: 0;}
+.main .top .info ul li .num { font-size: .25rem; line-height: 1; color: #666666;}
+.main .top .info ul li .text { font-size: .22rem; line-height: 1; color: #999999; padding-top: .08rem;}
+.main .top:after { content:""; clear: both; display: block;} 
+.main .top .time { font-size: .22rem; line-height: 1.6; color: #999999; position: absolute; right: .25rem; bottom: .42rem;}
+.main .navlist { width: 100%; margin: 0 auto; display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: .36rem;}
+.main .navlist li { flex: 1; font-size: .33rem; line-height: 1; color: #999999; font-weight: bold; padding-bottom: .25rem; text-align: center;}
+.main .navlist li.act { color: #206BD1;} 
+
+.jobRecommend { padding: .2rem .27rem 0;}
+.jobRecommend .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.jobRecommend .title span { font-size: .33rem; line-height: 1; color: #333333; padding-right: .15rem;}
+.jobRecommend .title .line { flex: 1; height: 1px; background: #D2D2D2; border: 0; margin: 0; margin-top: .2rem;}
+.jobRecommend .list .item { border: 1px solid #D6D6D6; }
+.jobRecommend .list {}
+.jobRecommend .list .item { border: 1px solid #D6D6D6; padding: .27rem .28rem .25rem; margin-top: .27rem; cursor: pointer;}
+.jobRecommend .list .item .job-salary { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.jobRecommend .list .item .job-salary .job { width: 3.9rem; margin-right: .5rem; font-family: "SourceHanSansCN-Regulars"; font-size: .27rem; line-height: 1.3; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.jobRecommend .list .item .job-salary .salary { width: 2rem; font-size: .27rem; line-height: 1.3; color: #FA6041; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.jobRecommend .list .item .need-time { font-size: .22rem; line-height: 1.3; color: #999999; padding-top: .24rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.jobRecommend .list .item .need-time .need { width: 3.9rem; margin-right: .5rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.jobRecommend .list .item .need-time .time { width: 2rem; text-align: right;} 
+.jobRecommend .lookMore { font-size: .25rem; color: #333333; line-height: 1; text-align: center; padding-top: .26rem;}
+.jobRecommend .lookMore span { color: #333333;}
+
+.project { padding: .34rem .27rem 0;}
+.project .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.project .title span { font-size: .33rem; line-height: 1; color: #333333; padding-right: .15rem;}
+.project .title .line { flex: 1; height: 1px; background: #D2D2D2; border: 0; margin-top: .2rem;}
+.project .list {}
+.project .list .item { width: 100%; height: auto; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.project .list .item:nth-child(3n) { margin-right: 0;} 
+.project .list .item .info { padding: 0 .27rem .24rem;}
+.project .list .item .info .name { font-size: .27rem; color: #333333; line-height: 1.3; font-weight: bold; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .26rem;}
+.project .list .item .info .desp { width: 100%; font-size: .26rem; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;  line-clamp: 2; -webkit-box-orient: vertical; margin-top: .13rem;}
+.project .list .item .info .time { margin-top: .2rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.project .list .item .info .time .left { flex: 1; font-size: .22rem; color: #999999; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.project .list .item .info .time .right { flex: 1; font-size: .22rem; color: #FA6041; line-height: 1.3; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.project .list .item .info .time:after { content:""; clear: both; display: block;}
+.project .lookMore { font-size: .25rem; color: #333333; line-height: 1; text-align: center; padding-top: .26rem;}
+.project .lookMore span { color: #333333;}

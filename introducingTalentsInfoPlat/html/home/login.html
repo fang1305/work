@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" />   
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />   
+		<link rel="stylesheet" type="text/css" href="../../css/home/login.css" />
+	</head>
+
+	<body>
+		<div class="container" id="app">
+			<p class="welcome">欢迎来到</p>
+	 		<p class="title">引才引智信息平台</p>
+	 		<div class="input-group">
+	 			<img class="icon hide" src="../../img/index/icon/icon_account.png" alt="" />
+	    		<input type="text" v-model="loginForm.account" name="" class="account" value="" placeholder="账号"/>
+	    	</div>
+	    	<div class="input-group pwd-group"> 
+	    		<img class="icon hide" src="../../img/index/icon/icon_pwd.png" alt="" />
+	    		<input type="password" v-model="loginForm.password" name="" class="password" value="" placeholder="密码"/> 
+	    	</div>
+	    	<div class="forget-pwd">
+    			<a href="mailVerify.html"><span>修改密码</span></a><span class="line">|</span><a href="mailVerify.html"><span>忘记密码</span></a>
+    		</div>
+    		<div class="login" @click="login">登录</div>
+    		<div class="bg"></div>
+    		<div class="dot1"></div>
+    		<div class="dot2"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>   
+	<script type="text/javascript" src="../../js/config.js"></script>     
+	<script type="text/javascript" src="../../js/vue.min.js"></script>  
+	<script>  
+		if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else { location.href = "../index/login.html?loginType="+parseUrl().id;} 
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "English", 
+				loginForm: {
+			        account: '',
+			        password: ''
+			    }
+			},
+			methods: {
+				login() {
+					let that = this;
+					if(that.loginForm.account === '' || that.loginForm.password === '') {
+						alert('账号或密码不能为空');
+					} else {
+						$.ajax({
+							url: config.apiHost +'login/login',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: that.loginForm,
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								if(data.status == 'ok'){
+//									console.log(data) 
+									alert(data.result);  
+									if(parseUrl()){
+										if(parseUrl().loginType == 1){
+	                                        // 一期
+	    									window.location.href = "http://www.hbafea.com";
+	                                    }
+									}
+									else{
+										window.location.href = "index.html";
+									} 
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+//								console.log('错误')
+//								console.log(xhr)
+//								console.log(textStatus)
+							},
+						})
+	                 }
+				}  
+			}
+		});
+		$(function(){
+			$(".password").on("focus",function(){ 
+				$(this).parent().children(".icon").show();
+				$(this).parent().addClass("act");
+			})
+			$(".account").on("focus",function(){ 
+				$(this).parent().children(".icon").show();
+				$(this).parent().addClass("act");
+			}) 
+		})
+	</script> 
+</html>

@@ -1,0 +1,46 @@
+.header { width: 100%; background: #EEEEEE;}
+.header .cont { width: 1200px; margin: 0 auto; padding-bottom: 48px; }
+.header .cont .left { float: left;}
+.header .cont .left .name { font-size: 36px; line-height: 1; color: #333333; padding-top: 46px;}
+.header .cont .left .desp { font-size: 18px; line-height: 1; color: #666666; padding-top: 18px;}
+.header .cont .left .desp .item:first-child { color: #FA6041;}
+.header .cont .left .desp .item:first-child span { display: none;} 
+.header .cont .left .desp .item:first-child span { display: none;} 
+.header .cont .left .other { font-size: 18px; line-height: 1; color: #999999; padding-top: 25px;}
+.header .cont .left .other span { padding-left: 9px; padding-right: 21px;}
+.header .cont .left .time { font-size: 14px; line-height: 1; color: #999999; padding-top: 20px;}
+.header .cont .applyCooperation { width: 160px; height: 60px; background-color: #206BD1; font-size: 24px; line-height: 60px; color: #FFF; margin-top: 54px; text-align: center; float: right; cursor: pointer;}
+.header .cont:after { content:""; clear: both; display: block;} 
+
+.main { width: 1200px; margin: 0 auto; padding-top: 40px; padding-bottom: 80px; display: flex; display: -webkit-flex; display: -ms-flexbox;} 
+.main .left { flex: 1; width: 803px; border-right: 1px solid #EEEEEE; padding-right: 109px; margin-right: 43px;} 
+.main .left .projectIntro { padding-bottom: 33px;}
+.main .left .projectIntro .title { font-size: 24px; line-height: 1; color: #333333; padding-top: 4px;}
+.main .left .projectIntro .content { font-size: 18px; line-height: 1.7; color: #666666; padding-top: 15px;}
+.main .left .projectIntro .content p { font-size: 18px !important; color: #666666 !important;}
+.main .left .projectIntro .content span { font-size: 18px !important; color: #666666 !important;}
+
+.main .right { width: 350px;} 
+.main .right .company .logo-name { line-height: 0; display: flex; display: -webkit-flex; display: -ms-flexbox;} 
+.main .right .company .logo-name img { width: 50px; height: 50px; border-radius: 50%; margin-right: 8px;}  
+.main .right .company .logo-name .name { width: 215px; font-size: 18px; line-height: 50px; color: #666666; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.main .right .company .list { padding-top: 8px;}
+.main .right .company .list .item { padding-top: 20px;}
+.main .right .company .list .item .iconfont { font-size: 14px; line-height: 1; padding-right: 10px; float: left;}
+.main .right .company .list .item span { font-size: 14px; line-height: 14px; color: #666666; float: left;}
+.main .right .company .list .item:after { content:""; clear: both; display: block;} 
+.main .right .recommendJob { padding-top: 40px;}  
+.main .right .recommendJob .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .right .recommendJob .title span { font-size: 24px; line-height: 1; color: #666666; padding-right: 11px;}
+.main .right .recommendJob .title .line { flex: 1; height: 1px; background: #EEEEEE; border: 0; margin-top: 12px;}
+.main .right .recommendJob .list { padding-top: 9px;}
+.main .right .recommendJob .list .item { width: 100%; padding-top: 20px; padding-bottom: 19px; border-bottom: 1px dashed #E4E4E4; line-height: 0; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .right .recommendJob .list .item:last-child { border-bottom: none;}
+.main .right .recommendJob .list .item img { width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;}
+.main .right .recommendJob .list .item .jobInfo { flex: 1;}
+.main .right .recommendJob .list .item .name-salary { display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: 3px;}
+.main .right .recommendJob .list .item .name-salary .name { flex: 2; font-size: 16px; line-height: 1.3; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.main .right .recommendJob .list .item .name-salary .salary { flex: 1; font-size: 16px; line-height: 1.3; color: #FA6041; text-align: center;}
+.main .right .recommendJob .list .item .country-time { display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: 11px;}
+.main .right .recommendJob .list .item .country-time .country { flex: 2; font-size: 14px; line-height: 1.3; color: #666666; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.main .right .recommendJob .list .item .country-time .time { flex: 1; font-size: 14px; line-height: 1.3; color: #999999;}

@@ -1,0 +1,69 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;}
+.main { padding: .27rem;}
+
+.list { width: 100%; /*height: .72rem;*/ font-size: 0; /*overflow-x: scroll; overflow-y: hidden; white-space:nowrap; text-align: center;*/}
+.list .item { display: inline-block; width: 2.1rem; padding: 0 .1rem; height: .7rem; border: 1px solid #00468C; font-size: .32rem; color: #00468C; line-height: .72rem; text-align: center; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.list .item:last-child { border-right: 1px solid #00468C;}
+.list .item.act { background-color: #00468C; color: #fff;}
+
+.neas-detail { width: 100%;}
+.neas-detail .name { font-size: .32rem; line-height: 1.7; color: #333333; padding-top: .28rem; font-weight: bolder;}
+.neas-detail .time-view { font-size: .18rem; line-height: 1; color: #666666; padding-top: .24rem;}
+.neas-detail .time-view .time { padding-right: .2rem;}
+.neas-detail .time-view .from { color: #333333; padding-right: .2rem;}
+.neas-detail .time-view .view { float: right;}
+.neas-detail .time-view .view .iconfont { font-size: .2rem;} 
+.neas-detail .newsCont { font-size: .27rem; line-height: 1.8; color: #666666; padding-top: .28rem;}
+.neas-detail .newsCont p { font-size: .27rem !important;}
+.neas-detail .newsCont span { font-size: .27rem !important;}
+.neas-detail .newsCont img { width: 100% !important; height: auto;}
+.neas-detail .page { margin-top: .29rem; display: flex; display: -webkit-flex;}
+.neas-detail .page .prev { width: 3.38rem; padding-right: .1rem; font-size: .28rem; line-height: 1.3; color: #999999; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;} 
+.neas-detail .page .iconfont { font-size: .28rem; line-height: 1.3; color: #999999;} 
+.neas-detail .page .next { width: 3.38rem; padding-left: .1rem; font-size: .28rem; line-height: 1.3; color: #999999; text-align: right; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+ 
+/* plan-entered */
+.plan-entered { padding-top: .44rem;}
+.plan-entered .info_input{ font-size: 0;padding-top: .27rem; }
+.plan-entered .title { font-size: .33rem; line-height: 1; color: #333333;} 
+.plan-entered .lineInput { width: 96%; padding: 0 2%; height: .72rem; border: 1px solid #999999; font-size: .22rem; line-height: .72rem;} 
+.plan-entered .name.active { width: 48%; } 
+.plan-entered .select-box { background: #FFF;width: 96%; padding: 0 2%; height: .74rem; border: 1px solid #999999; font-size: .22rem; line-height: .4rem;} 
+.plan-entered .phone { width: 96%; padding: 0 2%; height: .72rem; border: 1px solid #999999; font-size: .22rem; line-height: .72rem; margin-top: .27rem;} 
+.plan-entered .sex{ margin-right: 2%;}
+.plan-entered .selectLine{ margin-top: .27rem;width: 100%;box-sizing: border-box; }
+.plan-entered textarea.moreInfo{  font-size: .1rem;padding: 0rem 2%; box-sizing: border-box; width: 100%;height: 2rem; margin-top: .27rem;border: 1px solid #999999; }
+.plan-entered textarea::-webkit-input-placeholder {font-size: .22rem;}
+.plan-entered .submit-btn{ margin-top: .27rem;width: 100%;background: #00468D;font-size: .22rem;line-height: .72rem;color: #FFF;text-align: center;cursor: pointer; }
+.plan-entered .divInput{ width: 48%;position: relative; }
+.plan-entered .number{ width: 44%; }
+.plan-entered ul li {list-style: none; font-size: .22rem;}
+.plan-entered .input {width: 100%;height: .72rem;line-height: .72rem;padding-left: 4%;box-sizing:border-box;border: 1px solid #999999;position: relative;}
+.plan-entered .input input{border: none;outline: none;width: 90%;height: .68rem;position: absolute;top: .01rem;font-size: .22rem;background: rgba(0,0,0,0);}
+.plan-entered .input img{position: absolute;right: 34px;top: 48%;}
+.plan-entered .list{width: 100%;border: 1px solid #cccccc;overflow: hidden;position: absolute;background: #FFF;}
+.plan-entered .list ul{ padding-left: 4%;cursor: pointer; }
+.plan-entered .list ul li {width: 100%;height: .72rem;cursor: pointer;line-height: .72rem;padding-left: 1%;}
+
+
+/* flex */
+.flex-def {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+.flex-zCenter {-webkit-box-pack: center;-moz-justify-content: center;-webkit-justify-content: center;justify-content: center;}
+.flex-zBetween { -webkit-box-pack: justify;-moz-justify-content: space-between;-webkit-justify-content: space-between;justify-content: space-between; }
+.flex-zEnd {-webkit-box-pack: end;-moz-justify-content: flex-end;-webkit-justify-content: flex-end;justify-content: flex-end;}
+
+
+/*.plan-entered .lineInput{ width: 100%; }
+.plan-entered .submit-btn{ margin-top: 28px; cursor:pointer;width: 366px;height: 60px;line-height: 60px;font-size: 16px;text-align: center;color:#FFF;background: #00468D; }
+.plan-entered .moreInfo{ font-family: Arial; font-size: 14px;padding: 10px 14px; box-sizing: border-box; width: 360px;height: 135px; margin-top: 30px;border: 1px solid #DFDFDF; }
+.plan-entered .info_input select{ border-radius:0; background: #FFF;width: 48%;height:45px;border:1px solid #DFDFDF;margin-top: 30px; }
+.plan-entered .info_input input.lineInput{ padding:0 14px;box-sizing: border-box;width: 366px;height:45px;border:1px solid #DFDFDF;margin-top: 30px; }
+.plan-entered .info_input input.active { width: 183px; }
+.plan-entered .info_input .select-box{ position: relative;width: 48%;height:45px;margin-top: 30px;display: inline-block; }
+.plan-entered .info_input .select-box .result{ padding: 0 14px;box-sizing: border-box;width: 100%;height:45px;border:1px solid #DFDFDF;font-size: 14px;line-height: 45px;color:#999; }
+.plan-entered .info_input .select-box ul{ -moz-box-shadow: 2px 2px 9px #cccbcb;-webkit-box-shadow: 2px 2px 9px #cccbcb;box-shadow:2px 2px 9px #cccbcb;z-index:999;width: 99%;position: absolute;top: 46px;background: #FFF;border: 1px solid rgba(223, 223, 223, .6);padding-left: 8px;box-sizing: border-box;cursor: pointer;}
+.plan-entered .info_input .select-box ul li{ width: 100%;line-height: 40px;color: #666;border-bottom: 1px solid rgba(223, 223, 223, .6);font-size: 16px; }
+.plan-entered .info_input .select-box ul li:last-child{ border-bottom:none; }*/
+
+
+/* .plan-entered .list ul li:hover{background-color: #cccccc;} */

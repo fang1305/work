@@ -1,0 +1,40 @@
+.container { width: 100%; min-height: 100%; background: #FFFFFF; position: relative;}
+.container .bg { width: 31%; height: 100%; background: #206BD1; position: absolute; top: 0; left: 0; z-index: 1;} 
+.main { width: 1200px; background: #FFF; border-radius: 20px; box-shadow:0px 10px 100px 0px rgba(0,99,175,0.18); line-height: 0; overflow: hidden;  display: flex; display: -webkit-flex; display: -ms-flexbox; margin: 0 auto; top: 100px; position: relative; z-index: 2;} 
+.main .poster { width: 500px; height: 750px; line-height: 0;}
+.main .poster img { width: 100%; height: 100%;}
+.main .right { flex: 1; padding-left: 147px; padding-right: 153px;}
+.main .welcome { font-size: 24px; line-height: 1; color: #666666; padding-top: 127px;}
+.main .title { font-size: 36px; line-height: 1; color: #333333; padding-top: 30px; padding-bottom: 70px;}
+.main .input-group { line-height: 0; padding-top: 39px; padding-bottom: 9px; border-bottom: 1px solid #999999; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .input-group.act { border-bottom: 1px solid #1F6BD0;}
+.main .input-group .icon { width: 15px; height: 17px; margin-right: 19px; margin-top: 2px;} 
+.main .input-group label { font-size: 18px; line-height: 1.3; color: #666666; margin-right: 19px;}
+.main .input-group input { width: 167px; height: 100%; border:0; outline: none; font-size: 18px; line-height: 1;}
+.main .pwd-group { position: relative;}
+.main .pwd-group .forget-pwd { position: absolute; bottom: 7px; right: 0; font-size: 14px; line-height: 1; color: #999999;}
+.main .pwd-group .forget-pwd span { cursor: pointer; color: #999999;}
+.main .code-group { border: 0;}
+.main .code-group label { line-height: 50px;}
+.main .code-group .identifyCode { width: 140px; height: 50px; line-height: 0; margin-right: 20px;}
+.main .code-group .identifyCode img { width: 100%; height: 100%;}
+.main .code-group input { height: 50px; border-bottom: 1px solid #999999;}
+.main .code-group input:focus { border-bottom: 1px solid #1F6BD0;}
+.main .login { width: 100%; height: 60px; background: #1F6BD0; font-size: 18px; line-height: 60px; color: #FFFFFF; text-align: center; margin-top: 79px; cursor: pointer;}
+@media screen and (max-width: 1440px) {
+	.main { top: 90px;}
+	.main { width: 800px; height: 450px;}
+	.main .poster { width: 300px; height: 450px;}
+	.main .right {padding-left: 98px; padding-right: 93px;}
+	.main .welcome { font-size: 18px; padding-top: 50px;}
+	.main .title { font-size: 26px; padding-top: 20px; padding-bottom: 30px;}
+	.main .input-group { padding-top: 19px;}
+    .main .input-group input { width: 140px;}
+    .main .input-group input.account { width: 80%;}
+	.main .input-group label { font-size: 16px;}
+	.main .input-group input { font-size: 16px;}
+	.main .code-group label { line-height: 40px;}
+	.main .code-group .identifyCode { width: 120px; height: 40px;}
+	.main .code-group input { height: 40px;}
+	.main .login { height: 50px; font-size: 16px; line-height: 50px; margin-top: 49px;}
+}

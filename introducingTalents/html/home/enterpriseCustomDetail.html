@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/component.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/enterpriseCustomDetail.css" />
+	</head>
+
+	<body>
+		<div class='container' id="app">
+			<div class="header"> 
+				<div id="dl-menu" class="dl-menuwrapper"> 
+					<button id="dl-menu-button">Open Menu</button> 
+					<ul class="dl-menu"> 
+					</ul> 
+				</div>
+				<div class="logo"><img src="../../img/icon/logo.png" /></div>
+				<div class="search" @click="searchBoxShow">
+					<img src="../../img/icon/icon_search.png" alt="" />
+				</div>
+				<div class="search-group" v-if="searchBox">
+					<span>{{searchBoxTitle}}</span>
+					<hr class="line" />
+					<input v-model="keyword" type="text" name="" id="" value="" placeholder="" />
+					<img src="../../img/icon/icon_search_blue.png" @click="searchFun"/>
+				</div>
+			</div>
+			<div class="main">
+				<div class="list" v-if="smallNav">
+					<div v-for="item in smallNav" :class="[typeid == item.id?'act item':'item']" v-on:click="articleList(item.id,parentid)">{{item.typename}}</div>
+				</div>
+				<div class="news-detail">
+					<div class="name" v-if="article.title">{{article.title}}</div>
+					<div class="time-view">
+						<span class="time" v-if="article.add_time">{{article.add_time | getDate}}</span>
+						<span class="from" v-if="article.typename">{{article.typename}}</span>
+						<span class="writer" v-if="article.author">作者：{{article.author}}</span>
+						<div class="view" v-if="article.click">
+							<i class="iconfont icon-yanjing"></i>
+							<span>{{article.click}}次浏览</span>
+						</div>
+					</div> 
+					<div class="newsCont"> 
+						<div class="swiper-container">
+							    <div class="swiper-wrapper">
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div>
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+							    </div> 
+							    <div class="swiper-pagination"></div>
+							</div>
+							<p>为使河北省科技企业经营管理者进一步拓展视野，学习对标世界最前沿科学技术，汲取创新因子，激发企业发
+展动力，探索企业快速发展的新路径。11月20日-28日，由河北省科技厅、美国河北硅谷创新中心 联合举办
+的河北科技卓越人才国际交流计划 •美国硅谷站活动组织18名河北省科技企业管理者赴美国硅谷学习培训。</p>
+					</div> 
+				</div> 
+			</div> 
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>
+	<script type="text/javascript" src="../../js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="../../js/jquery.dlmenu.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/rest.js"></script>
+	<script type="text/javascript" src="../../js/vue.min.js"></script>  
+	<script type="text/javascript" src="../../js/swiper.min.js"></script>  
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "English", 
+				navBar: "",
+				smallNav: "",
+				position: "", 
+				parentid: "",
+				typeid: "",
+				article: {  
+					title: "河北科技卓越人才国际交流计划--美国硅谷站活动圆满落幕", 
+					author: "河北引才引智", 
+					click: 102,
+					add_time: 2019-11-09, 
+					content: "",
+					typename: "专家风采",
+				}, 
+				articleCont: "", 
+				front: "",
+				after: "", 
+				recomList: "",
+				specialList: "",
+				searchObj: {
+					arctype_id:"",
+					lang: 'cn', 
+					aid: "",
+				} 
+			}, 
+			created() {  
+		        if(sessionStorage.lang == 'en'){
+		            this.languageText = "中文";
+			 		this.indexText = "Index"; 
+			 		this.lang = "en";
+				}else{
+					sessionStorage.lang == 'cn';
+				}  
+		        if(parseUrl()){
+		            this.parentid = parseUrl().parentid?parseUrl().parentid:''; 
+		            this.typeid = parseUrl().typeid?parseUrl().typeid:''; 
+		        } 
+				this.requireData();
+		    },
+			methods: {
+				requireData(){
+					// 导航栏
+		//			this.getList('navBar','home/arctypeList'); 
+					this.getList('smallNav','home/arctypeList'); 
+					// 文章详情
+//					this.getList('article','home/articleDetail'); 
+		        },
+		        getList(type,url,typeid){ 
+		            let that = this;
+		           	if(type=="navBar"){  
+		           		that.searchObj.arctype_id = "";
+		           	} 
+		           	if(type=="smallNav"){ 
+		           		that.searchObj.arctype_id = parseUrl().parentid?parseUrl().parentid:''; 
+		           	}   
+		           	that.searchObj.aid = parseUrl().aid?parseUrl().aid:''; 
+		            that.searchObj.lang = that.lang; 
+					$.ajax({
+						url: config.apiHost+url,
+						type: 'GET',  
+		                async: true,  
+		                data:that.searchObj,
+						dataType: 'json', 
+						success: function (ret){
+							typeof ret == "object"?'':ret=JSON.parse(ret);
+							// 发送成功 
+							if(ret.status == 'ok'){
+								var list = ret.data;
+								//console.log(ret);
+		                        if(type=="smallNav"){
+		                        	that[type] = list[0].childList; 
+		                        }else if(type=="article"){ 
+		                        	 	 
+		                        }else{ 
+		                        	that[type] = list;
+		                        } 
+							}
+							else{
+								that[type] = "";
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+				},
+				// 中英文切换
+		        changeLang(){
+		            this.lang == "en"?sessionStorage.lang = "cn":sessionStorage.lang = "en";  
+					location.href = "index.html";
+		        },
+				articleList: function(typeid, parentid,level) { 
+					if( parentid==9 && level==0 || parentid == 10 && level==0 ){  
+					    var url = "http://ku.hbafea.com";
+					}else if( typeid==11 || typeid == 50){           //专家人才
+					    var url = "http://ku.hbafea.com/html/index/expertTalents.html";
+					}else if( typeid==13 || typeid == 51){           //项目技术
+					    var url = "http://ku.hbafea.com/html/index/technology.html";
+					}else if( typeid==15 || typeid == 52){           //合作机构
+					    var url = "http://ku.hbafea.com/html/index/cooperativeAgency.html";
+					}else if( typeid == 19 || typeid == 20 || typeid == 33 || typeid == 34 || typeid == 29 || typeid == 30 || typeid == 35 || typeid == 36 || typeid == 31 || typeid == 32){ 
+						// 卓越人才计划、温馨手拉手、创业扶持、行业许可、引智政策
+		                var url = "newsLine.html?typeid=" + typeid + "&parentid=" + parentid;
+					}else if( typeid==21 || typeid == 22){           //国际交流培训
+					    var url = "newsList.html?typeid=" + typeid + "&parentid=" + parentid;
+					}else if( typeid==23 || typeid == 24){           //名师讲堂
+					    var url = "teacherLectureList.html?typeid=" + typeid + "&parentid=" + parentid;
+					}else{
+						var url = "newsList.html?typeid=" + typeid + "&parentid=" + parentid;
+					}   
+				 	location.href = url;
+		//          window.open(url);
+				}
+			},
+			filters: {
+				getDate: function(str) {
+					var oDate = new Date(str*1000),
+					oYear = oDate.getFullYear(),
+					oMonth = oDate.getMonth() + 1,
+					oDay = oDate.getDate(),
+					oHour = oDate.getHours(),
+					oMin = oDate.getMinutes(),
+					oSec = oDate.getSeconds(),
+					oTime = oYear + '-' + oMonth + '-' + oDay; //最后拼接时间
+					//console.log(oTime);
+					return oTime;
+				}, 
+			},
+		}); 
+		$(function() {  
+			vm.typeid = $.getUrlParam('typeid');
+			vm.parentid =  $.getUrlParam('parentid');
+			var param = {
+				lang: vm.lang,
+			}
+			apiAjax("home", param, "GET", home); 
+			var swiper = new Swiper('.swiper-container', {
+		        pagination: {
+			        el: '.swiper-pagination',
+			        type: 'fraction',
+			    },
+		    });
+		}) 
+		function home(ret) {
+			if(ret.data) { 
+				vm.navBar = ret.data;
+				var list = ""; 
+				if(vm.lang == "en") {
+					list += '<li class="indexPage"><a href="index.html">Index</a></li>';
+				} else {
+					list += '<li class="indexPage"><a href="index.html">首页</a></li>';
+				}
+				for(var i = 0; i < ret.data.length; i++) {
+					list += '<li>' +
+						'<a>' + ret.data[i].typename + '</a>' +
+						'<ul class="dl-submenu">' +
+						'<li class="dl-back"><a href="#">返回上一级</a></li> ';
+					for(var j = 0; j < ret.data[i].childList.length; j++) {
+						list += '<li onclick="articleList(' + ret.data[i].childList[j].id + ',' + ret.data[i].id + ')"><a>' + ret.data[i].childList[j].typename + '</a></li>';
+					}
+					list += '</ul>' +
+						'</li>';
+				} 
+				$(".dl-menu").html(list);
+				$('#dl-menu').dlmenu();
+			}
+		} 
+		function articleList(typeid, parentid) { 
+			if( typeid==11 || typeid == 50){           //专家人才
+			    var url = "http://ku.hbafea.com/html/home/expertTalents.html";
+			}else if( typeid==13 || typeid == 51){           //项目技术
+			    var url = "http://ku.hbafea.com/html/home/technology.html";
+			}else if( typeid==15 || typeid == 52){           //合作机构
+			    var url = "http://ku.hbafea.com/html/home/cooperativeAgency.html";
+			}else if( typeid==21 || typeid == 22){           //国际交流培训
+			    var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+			}else if( typeid==23 || typeid == 24){           //名师讲堂
+			    var url = "teacherLectureList.html?typeid=" + typeid + "&parentid=" + parentid;
+			}else{
+				var url = "newsList.html?typeid=" + typeid + "&parentid=" + parentid;
+			}   
+		 	location.href = url;
+		    //window.open(url);
+		}
+		var bodyH = $("body").height();
+		var headerH = $(".header").height(); 
+		var footerH = $(".footer").height();
+		var bottomH = $(".bottom").height();
+		var mainH = bodyH - headerH -footerH - bottomH - 280; 
+		$(".main").css({"min-height":mainH});
+	</script>
+</html> 

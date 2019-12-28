@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/component.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/pagination.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home/search.css" />
+	</head>
+
+	<body>
+		<div class='container' id="app">
+			<div class="header"> 
+				<div id="dl-menu" class="dl-menuwrapper"> 
+					<button id="dl-menu-button">Open Menu</button> 
+					<ul class="dl-menu">
+					</ul> 
+				</div>
+				<div class="logo"><img src="../../img/icon/logo.png" /></div>
+				<div class="search" @click="searchBoxShow">
+					<img src="../../img/icon/icon_search.png" alt="" />
+				</div>
+				<div class="search-group" v-if="searchBox">
+					<span>{{position}}</span>
+					<hr class="line" />
+					<input v-model="keyword" type="text" name="" id="" value="" placeholder="" />
+					<img src="../../img/icon/icon_search_blue.png" @click="searchFun"/>
+				</div>
+			</div>
+			<div class="main">  
+				<div class="intro-box">检索出{{ newsList.length }}条结果</div>
+				<div class="news-list">
+                    <div class="news" v-for="news in newsList" v-on:click="articleDetail(news.aid,news.typeid,news.parent_id)">
+                        <div class="flex-def">
+                            <div class="tag" v-if="position">{{position}}</div>
+                            <span class="name">{{news.title}}</span>
+                            <span class="time">{{news.add_time | getDate}}</span>
+                        </div>
+						<p class="desp">{{news.seo_description}}</p>
+                    </div>
+				</div>
+				<div class="pages">
+					<div id="pagination"></div>
+				</div>
+			</div>   
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>
+	<script type="text/javascript" src="../../js/swiper.min.js"></script>
+	<script type="text/javascript" src="../../js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="../../js/jquery.dlmenu.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script type="text/javascript" src="../../js/rest.js"></script>
+	<script type="text/javascript" src="../../js/vue.min.js"></script> 
+	<script type="text/javascript" src="../../js/pagination.js"></script> 
+	<script type="text/javascript" src="../../js/home/search.js"></script>  
+</html>

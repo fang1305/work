@@ -1,0 +1,67 @@
+.poster { width: 100%; line-height: 0;}
+.poster img { width: 100%; height: auto;}
+.main { padding: 0 .27rem .58rem;}
+.main .top { padding-top: .4rem; padding-bottom: .27rem; border-bottom: 1px solid #EEEEEE;}
+.main .top .title { font-size: .38rem; line-height: 1; color: #333333; font-weight: bold;}
+.main .top .title span { font-size: .22rem; line-height: 1; color: #999999; padding-left: .07rem; font-weight: normal;}
+.main .top ul { font-size: 0; padding-top: .34rem;}
+.main .top ul li { display: inline-block; font-size: .33rem; line-height: 1; color: #999999; padding-right: .26rem;}
+.main .top ul li a { color: #999999;}
+.main .top ul li.act { color: #206BD1;} 
+
+.navigation .J_filter_country { border-bottom: 1px solid #EEEEEE;}
+.navigation .nav-category { font-size: .25rem; color: #666666; line-height: .78rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.navigation .nav-category h4 { font-weight: normal; margin: 0; padding-right: .11rem; float: left;}
+.navigation .nav-category .def { padding: 0 .1rem; cursor: pointer; float: left;}
+.navigation .nav-category .nc-contain { flex: 1; display: flex; display: -webkit-flex; display: -ms-flexbox; padding-left: .1rem; float: left;} 
+.navigation .nav-category .nc-contain .country { flex: 1;}
+.navigation .nav-category .nc-contain .country .item { padding: 0 .1rem; cursor: pointer; }
+.navigation .nav-category .act { color: #FA6041;}
+.navigation .nav-category:after { content:""; clear: both; display: block;} 
+
+.navigation .J_filter_sel {}
+.navigation .nav-category {}
+.navigation .nav-category .nav-tab { min-width: 1.39rem; height: .78rem; position: relative; cursor: pointer; display: inline-block;}
+.navigation .nav-category .nav-tab .input { padding-right: .27rem; margin-right: .27rem; height: .78rem; position: relative; font-size: 0;}
+.navigation .nav-category .nav-tab .input .icon-error { color: #FA6041; font-size: .22rem; font-weight: bolder; line-height: .78rem;}
+.navigation .nav-category .nav-tab .input span { display: inline-block; height: 100%; font-size: .25rem; color: #666666; line-height: .78rem; padding-right: .1rem;}
+/*.navigation .nav-category .nav-tab .input span { display: inline-block; max-width: 1.1rem; height: 100%; font-size: .25rem; color: #666666; line-height: .78rem; padding-right: .1rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}*/
+.navigation .nav-category .nav-tab .input.act span { color: #FA6041;}
+.navigation .nav-category .nav-tab .input img { width: .15rem; height: .08rem; position: absolute; top: .37rem; right: 0;}
+.navigation .nav-category .nav-tab .slist { min-width: 100%; background: #FFF; font-size: .25rem; box-shadow:0px 1px 8px 0px rgba(0, 0, 0, 0.12); position: absolute; top: 0; left: 0; z-index: 3;}
+.navigation .nav-category .nav-tab .slist .sinput { padding: 0 .52rem 0 .27rem; height: .78rem; position: relative;}
+.navigation .nav-category .nav-tab .slist .sinput span { height: 100%; font-size: .25rem; color: #206BD1; line-height: .78rem; padding-right: .1rem; white-space: nowrap;}
+.navigation .nav-category .nav-tab .slist .sinput .iconfont { font-size: .18rem; color: #206BD1; position: absolute; top: 0; right: .27rem;}
+.navigation .nav-category .nav-tab .slist .sinput img { width: .15rem; height: .08rem; position: absolute; top: .37rem; right: .27rem;}
+.navigation .nav-category .nav-tab .slist ul li{ height: .45rem; cursor: pointer; font-size: .22rem; line-height: .45rem; color: #999999; padding-left: .29rem; padding-right: .1rem; white-space: nowrap; }
+.navigation .nav-category .nav-tab .slist ul li:hover{ background-color: #EEEEEE;} 
+
+.pages { text-align: center; margin-top: .4rem;}
+#pagination { display: inline-block;}
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active>a { background-color: #206BD1;}
+.paginationjs .paginationjs-pages li>a { width: .54rem; height: .54rem; font-size: .27rem; line-height: .54rem;}
+.paginationjs .paginationjs-pages li.active>a { height: .54rem; line-height: .54rem; }  
+.paginationjs-prev a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs-next a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs .paginationjs-pages li { margin-right: .27rem;}
+.paginationjs-page,.paginationjs-prev,.paginationjs-next,.paginationjs-ellipsis { margin-top: .14rem;}
+.paginationjs-next { margin-right: 0 !important;}
+
+.list { font-size: 0; margin-top: -.27rem;}
+.list .item { height: auto; padding: .27rem; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.list .item .company { display: flex; display: -webkit-flex; padding-bottom: .27rem; border-bottom: 1px solid #DCDCDC;}
+.list .item .company .poster { width: .54rem; height: .54rem; border-radius: 50%; margin-right: .11rem; float: left; line-height: 0; overflow: hidden;}
+.list .item .company .poster img { width: 100%; height: 100%;} 
+.list .item .company .cpname { flex: 1; font-size: .3rem; color: #666666; line-height: .54rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.list .item .company .desp { flex: 1; font-size: .22rem; color: #666666; line-height: .54rem; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.list .item .info .job-time-salary { font-size: .34rem; color: #333333; line-height: 1.3; padding-top: .21rem;}
+.list .item .info .job-time-salary .jobname { display: inline-block; max-width: 3.55rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.list .item .info .job-time-salary .time { font-size: .22rem; line-height: 2.2; color: #999999; float: left;}
+.list .item .info .job-time-salary .salary { font-size: .34rem; color: #FA6041; line-height: 1.5; float: right;}
+.list .item .info .job-time-salary:after { content:""; clear: both; display: block;} 
+.list .item .info .position { padding-top: .13rem; display: flex; display: -webkit-flex;} 
+.list .item .info .position .left { flex: 1;} 
+.list .item .info .position .need { font-size: .26rem; color: #666666; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.list .item .info .position .pot { overflow: hidden; white-space: nowrap; padding-top: .08rem;} 
+.list .item .info .position .pot span { display: inline-block; min-width: 1rem; padding-right: .2rem; font-size: .18rem; color: #999999; line-height: 1.3;} 
+.list .item .info .position .look { float: right; width: 1.63rem; height: .63rem; background: #206BD1; font-size: .25rem; line-height: .63rem; color: #FFFFFF; text-align: center;} 

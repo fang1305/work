@@ -1,0 +1,43 @@
+.main { width: 1200px; margin: 0 auto; padding-bottom: 85px;}
+.second-nav { padding: 30px 0; border-bottom: 1px solid #EEEEEE; font-size: 0;}
+.second-nav .list { display: inline-block;} 
+.second-nav .list span { font-size: 16px; line-height: 1; color: #999999; padding-right: 40px; cursor: pointer;}
+.second-nav .list span.act { color: #00468C;}
+.second-nav .list span:hover { color: #00468C;}
+.second-nav .position { font-size: 16px; line-height: 1; color: #999999; float: right;}
+.second-nav .position span { color: #00468C;}
+
+.intro-box { width: 100%;box-sizing: border-box;padding: 20px 20px 10px; }
+.intro-box h3{ color: #333;font-size: 24px;margin: 0;line-height: 23px; }
+.intro-box p{ padding-top: 20px;color:#333;line-height: 30px;font-size: 18px; }
+
+.news-list {}
+.news-list .news { width: 100%;padding: 28px 30px; box-sizing: border-box; margin-top: 30px; line-height: 0; float: left; margin-right: 35px; cursor: pointer;border: 1px solid #DADADA;}
+.news-list .news .info{ max-width: 900px; }
+.news-list .news:nth-child(2n) { margin-right: 0;}
+.news-list .news .desc_box{ width: 891px; }
+.news-list .news .desc_box.active{ padding-top: 12px; }
+.news-list .news .poster { width: 80px;min-width: 80px;padding-top: 10px; height: 80px; float: left; margin-right: 20px;}
+.news-list .news .poster img { width: 100%; height: 100%;}
+.news-list .news .name { font-size: 24px; line-height: 1.3; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.news-list .news .desp { flex:1;font-size: 16px; line-height: 26px; color: #666666; padding-top: 10px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical;}
+.news-list .news .time { font-size: 14px; line-height: 1; color: #999999; text-align: right;margin-bottom: 25px;margin-top: 14px;}
+.news-list .news .btn { font-size: 20px; line-height: 60px; color: #FFF;width: 200px;text-align: center;background: #00468C;}
+.news-list .news .time.active{ margin-bottom: 30px; }
+.news-list:after { content:""; clear: both; display: block;} 
+
+.pages { text-align: center; margin-top: 99px;}
+#pagination { display: inline-block;}
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active>a { background-color: #00468D;}
+.paginationjs-prev a { padding: 0 10px;}
+.paginationjs-next a { padding: 0 10px;}
+
+
+/* 定义 */
+.flex-def {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+/* 主轴居中 */
+.flex-zCenter {-webkit-box-pack: center;-moz-justify-content: center;-webkit-justify-content: center;justify-content: center;}
+/* 主轴两端对齐 */
+.flex-zBetween { -webkit-box-pack: justify;-moz-justify-content: space-between;-webkit-justify-content: space-between;justify-content: space-between; }
+/* 主轴end对齐 */
+.flex-zEnd {-webkit-box-pack: end;-moz-justify-content: flex-end;-webkit-justify-content: flex-end;justify-content: flex-end;}

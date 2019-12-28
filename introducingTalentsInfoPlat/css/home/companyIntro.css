@@ -1,0 +1,24 @@
+.main { padding-bottom: .5rem;}
+.main .top { width: 100%; padding: .26rem 0 .5rem; border: 1px solid #DFDFDF; position: relative;}
+.main .top .cologo { width: 1.46rem; height: 1.2rem; line-height: 0; float: left; text-align: center; margin-left: .45rem; margin-right: .44rem; overflow: hidden;}
+.main .top .cologo img { width: auto; height: 100%;}
+.main .top .info { float: left;}
+.main .top .info .name { font-size: .33rem; line-height: 1; color: #333333; font-family: "SourceHanSansCN-Regulars"; font-weight: bold;}
+.main .top .info .country { font-size: .22rem; line-height: 1; color: #999999; padding-top: .17rem;}
+.main .top .info .country .iconfont { font-size: .2rem; line-height: 1; color: #999999; padding-top: .09rem;}
+.main .top .info .country span { padding-right: .18rem;}
+.main .top .info ul { height: .53rem; margin-top: .26rem;}
+.main .top .info ul li { padding: 0 .17rem; text-align: center; border-right: 1px solid #DFDFDF; float: left;}
+.main .top .info ul li:first-child { padding-left: 0;}
+.main .top .info ul li:last-child { border-right: 0;}
+.main .top .info ul li .num { font-size: .25rem; line-height: 1; color: #666666;}
+.main .top .info ul li .text { font-size: .22rem; line-height: 1; color: #999999; padding-top: .08rem;}
+.main .top:after { content:""; clear: both; display: block;} 
+.main .top .time { font-size: .22rem; line-height: 1.6; color: #999999; position: absolute; right: .25rem; bottom: .42rem;}
+.main .navlist { width: 100%; margin: 0 auto; display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: .36rem;}
+.main .navlist li { flex: 1; font-size: .33rem; line-height: 1; color: #999999; font-weight: bold; padding-bottom: .25rem; text-align: center;}
+.main .navlist li.act { color: #206BD1;} 
+.main .cont { padding: 0 .28rem; font-size: .27rem; line-height: 1.7; color: #666666; word-break: break-all;}
+.main .cont p { font-size: .27rem !important;}
+.main .cont span { font-size: .27rem !important;}
+.main .cont img { width: 100%;}

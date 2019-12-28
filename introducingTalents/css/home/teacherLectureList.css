@@ -1,0 +1,29 @@
+.container { width: 100%; height: 100%; padding: 0; margin: 0;} 
+.main { padding: .27rem;}
+
+.list { width: 100%; /*height: .72rem;*/ font-size: 0; /*overflow-x: scroll; overflow-y: hidden; white-space:nowrap; text-align: center;*/}
+.list .item { display: inline-block; width: 2.1rem; padding: 0 .1rem; height: .7rem; border: 1px solid #00468C; font-size: .32rem; color: #00468C; line-height: .72rem; text-align: center; overflow: hidden; white-space: nowrap;text-overflow: ellipsis;}
+.list .item:last-child { border-right: 1px solid #00468C;}
+.list .item.act { background-color: #00468C; color: #fff;}
+
+.news-list { font-size: 0;}
+.news-list .news { display: inline-block; width: 3.34rem; margin-top: .27rem; line-height: 0; position: relative; margin-right: .27rem; vertical-align: top;} 
+.news-list .news:nth-child(2n) { margin-right: 0;}
+.news-list .news .poster { width: 100%; height: 2rem; margin-right: .32rem; line-height: 0;}
+.news-list .news .poster img { width: 100%; height: 100%;}
+.news-list .news .name { font-size: .28rem; line-height: 1; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .18rem;}
+.news-list .news .desp { height: 1.1rem; font-size: .22rem; line-height: 1.7; color: #666666; padding-top: .15rem; }
+.news-list .news .time { font-size: .22rem; line-height: 1.7; color: #999999; text-align: right; position: absolute; right: 0; bottom: 0;}
+.news-list .news:after { content:""; clear: both; display: block;} 
+
+
+.pages { text-align: center; margin-top: .4rem;}
+#pagination { display: inline-block;}
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active>a { background-color: #206BD1;}
+.paginationjs .paginationjs-pages li>a { width: .54rem; height: .54rem; font-size: .27rem; line-height: .54rem;}
+.paginationjs .paginationjs-pages li.active>a { height: .54rem; line-height: .54rem; }  
+.paginationjs-prev a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs-next a { width: 1rem !important; padding: 0 .1rem;}
+.paginationjs .paginationjs-pages li { margin-right: .27rem;}
+.paginationjs-page,.paginationjs-prev,.paginationjs-next,.paginationjs-ellipsis { margin-top: .14rem;}
+.paginationjs-next { margin-right: 0 !important;} 

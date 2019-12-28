@@ -1,0 +1,36 @@
+.main { padding-bottom: .23rem;}
+.top { padding: .35rem .27rem .24rem; box-shadow:0px 0px 14px 0px rgba(0,70,141,0.15); position: relative;}
+.top .name { font-size: .43rem; line-height: 1.1; color: #333333;}
+.top .desp { padding-right: 2.3rem; font-size: .25rem; line-height: 1.3; color: #666666; padding-top: .22rem;}
+.top .desp span { padding-right: .26rem;}
+.top .time { font-size: .22rem; line-height: 1; color: #999999; padding-top: .25rem;}
+.top .applyCooperation { width: 1.63rem; height: .63rem; background-color: #206BD1; font-size: .25rem; line-height: .63rem; color: #FFF; text-align: center; position: absolute; right: .45rem; bottom: .3rem;}
+
+.info { padding: 0 .27rem;}
+.info .target .title { font-size: .33rem; line-height: 1; color: #333333; font-weight: bold; padding-top: .45rem;}
+.info .target .content { font-size: .27rem; line-height: 1.7; color: #666666; padding-top: .17rem; word-break: break-all;}
+.info .projectIntro .title { font-size: .33rem; line-height: 1; color: #333333; font-weight: bold; padding-top: .45rem;}
+.info .projectIntro .content { font-size: .27rem; line-height: 1.7; color: #666666; padding-top: .17rem; word-break: break-all;}
+.info .projectIntro .content1 { font-size: .27rem; line-height: 1.7; color: #666666; padding-top: .17rem;}
+.info .projectIntro .content p { font-size: .27rem !important; color: #666666 !important;}
+.info .projectIntro .content span { font-size: .27rem !important; color: #666666 !important;}
+.info .projectIntro .content1 p { font-size: .27rem !important; color: #666666 !important;}
+.info .projectIntro .content1 span { font-size: .27rem !important; color: #666666 !important;} 
+.info .projectIntro .content1 img { width: 100%;}
+.info .projectIntro .content .zhan { font-size: .27rem; line-height: 1; color: #206BD1;}
+.info .projectIntro .content .zhan .iconfont { font-size: .27rem; line-height: 1; font-weight: bolder;}
+
+.other-project { padding: 0 .27rem;}
+.other-project .title { font-size: .33rem; line-height: 1; color: #333333; font-weight: bold; padding-top: .45rem;}
+
+.other-project .list {}
+.other-project .list .item { width: 100%; height: auto; margin-top: .27rem; box-shadow:0px 1px 11px 0px rgba(0,70,141,0.12);}
+.other-project .list .item .info { padding: 0 .27rem .24rem;}
+.other-project .list .item .info .name { font-size: .34rem; color: #333333; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: .26rem;}
+.other-project .list .item .info .desp { width: 100%; font-size: .26rem; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical; margin-top: .13rem;}
+.other-project .list .item .info .time { margin-top: .2rem; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.other-project .list .item .info .time .left { flex: 1; font-size: .22rem; color: #999999; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.other-project .list .item .info .time .right { flex: 1; font-size: .22rem; color: #FA6041; line-height: 1.3; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.other-project .list .item .info .time:after { content:""; clear: both; display: block;}
+.other-project .lookMore { font-size: .25rem; color: #333333; line-height: 1; text-align: center; padding-top: .26rem;}
+.other-project .lookMore span { color: #333333;}

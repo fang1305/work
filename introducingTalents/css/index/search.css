@@ -1,0 +1,51 @@
+.main { width: 1200px; margin: 0 auto; padding-bottom: 85px;}
+.second-nav { padding: 30px 0; border-bottom: 1px solid #EEEEEE; font-size: 0;}
+.second-nav .list { display: inline-block;} 
+.second-nav .list span { font-size: 16px; line-height: 1; color: #999999; padding-right: 40px; cursor: pointer;}
+.second-nav .list span.act { color: #00468C;}
+.second-nav .list span:hover { color: #00468C;}
+.second-nav .position { font-size: 16px; line-height: 1; color: #999999; float: right;}
+.second-nav .position span { color: #00468C;}
+
+.news-list .intro-box { width: 100%;box-sizing: border-box;padding: 20px 0;border-bottom: 1px solid #EEEEEE; }
+.news-list .intro-box h3{ color: #333;font-size: 20px;margin: 0;line-height: 23px; }
+.news-list .intro-box p{ padding-top: 20px;color:#333;line-height: 30px;font-size: 18px; }
+
+.mainList {}
+.news-list { flex: 1;border-top: 1px solid #EEEEEE;margin-right: 40px;}
+.news-list .news { width: 100%;padding:0px; box-sizing: border-box; margin-top: 30px; line-height: 0; float: left; margin-right: 35px; cursor: pointer;}
+.news-list .news:nth-child(2n) { margin-right: 0;}
+.news-list .news .desc_box{ width: 891px; }
+.news-list .news .desc_box.active{ padding-top: 12px; }
+.news-list .news .tag { background: #00468D;min-width: 80px;box-sizing: border-box;padding: 5px 12px;font-size: 14px;color: #FFF;line-height: 14px;margin-right: 9px; }
+.news-list .news .name { flex:1;width: 580px;font-size: 20px; line-height: 20px; color: #333333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.news-list .news .desp { flex:1;font-size: 16px; line-height: 26px; color: #666666; padding-top: 20px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  line-clamp: 3; -webkit-box-orient: vertical;}
+.news-list .news .time { font-size: 14px; line-height: 1; color: #999999; text-align: right;padding-top: 4px;padding-left: 10px;}
+.news-list .news .btn { font-size: 20px; line-height: 60px; color: #FFF;width: 200px;text-align: center;background: #00468C;}
+.news-list .news .time.active{ margin-bottom: 30px; }
+.news-list:after { content:""; clear: both; display: block;} 
+
+.news-other { width: 360px;}
+.news-other .title{ margin-top:30px;font-size: 24px;line-height: 24px;border-left: 2px solid #333;color: #333;padding-left: 10px; }
+.news-other .news .desc_box{ width: 100%; }
+.news-other .news-list{ min-width: 360px;max-width: 360px;margin-right: 0;border-top: none;margin-top: 0; }
+.news-other .news-list .news .name{ padding-left: 0; }
+.news-other .news-list .news .desp{ padding-top: 12px; }
+.news-other .news-list .news .desp { -webkit-line-clamp: 2;  line-clamp: 2; }
+
+.pages { text-align: center; margin-top: 99px;}
+#pagination { display: inline-block;}
+.paginationjs.paginationjs-theme-blue .paginationjs-pages li.active>a { background-color: #00468D;}
+.paginationjs-prev a { padding: 0 10px;}
+.paginationjs-next a { padding: 0 10px;}
+
+
+/* 定义 */
+.flex-def {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+/* 主轴居中 */
+.flex-zCenter {-webkit-box-pack: center;-moz-justify-content: center;-webkit-justify-content: center;justify-content: center;}
+/* 主轴两端对齐 */
+.flex-zBetween { -webkit-box-pack: justify;-moz-justify-content: space-between;-webkit-justify-content: space-between;justify-content: space-between; }
+/* 主轴end对齐 */
+.flex-zEnd {-webkit-box-pack: end;-moz-justify-content: flex-end;-webkit-justify-content: flex-end;justify-content: flex-end;}
+.flex-cCenter {-webkit-box-align: center;-moz-align-items: center;-webkit-align-items: center;align-items: center;}

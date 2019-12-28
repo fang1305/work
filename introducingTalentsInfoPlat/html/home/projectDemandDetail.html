@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/home/component.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/home/projectDemandDetail.css" />
+	</head>
+
+	<body>
+		<div class='container' id="app">
+			<div class="header"> 
+				<div id="dl-menu" class="dl-menuwrapper"> 
+					<button id="dl-menu-button">Open Menu</button> 
+					<ul class="dl-menu">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="expertTalents.html">专家人才</a></li>
+						<li><a href="technology.html">项目技术</a></li>
+						<li><a href="cooperativeAgency.html">合作机构</a></li>
+					</ul> 
+				</div>
+				<div class="logo"><img src="../../img/home/logo.png" /></div>
+				<div class="search">
+					<img src="../../img/home/icon_search.png" alt="" />
+				</div>
+			</div>
+			<div class="main"> 
+				<div class="top">
+				 	<p class="name" v-text="detail.title"></p>
+			 		<div class="desp">
+			 			<span v-if="detail.nationality_name" v-text="detail.nationality_name"></span>
+			 			<span v-if="detail.industry_name" v-text="detail.industry_name"></span>
+			 			<span v-if="detail.core_science" v-text="detail.core_science"></span>
+			 		</div>
+			 		<p class="time" v-if="detail.add_time">{{getDateInit(detail.add_time)}}发布</p>		
+			 		<div class="applyCooperation">申请合作</div>
+				</div> 
+				<div class="info">
+					<div class="target">
+						<div class="title">预期目标</div>
+						<div class="content" v-text="detail.target"></div>
+					</div> 
+					<div class="projectIntro">
+						<div class="title">项目介绍</div>
+						<div class="content" v-if="detailAllContShow==false">{{detailCont.slice(0,200)}}
+							<span class="zhan">
+								<span>展开全部</span>
+								<i class="iconfont icon-jiantou"></i>
+							</span>
+						</div>
+						<!--<div class="content">
+							<span class="zhan">
+								<span>展开全部</span>
+								<i class="iconfont icon-jiantou"></i>
+							</span>
+						</div>-->
+						<div :class="['content1',detailAllContShow?'':'hide']" v-html="detail.detail"></div>
+					</div>
+					<div class="projectIntro">
+						<div class="title">技术难题</div>
+						<div class="content" v-html="detail.technical_problems"></div>
+				    </div>
+					<div class="projectIntro">
+						<div class="title">解决方案</div>
+						<div class="content" v-html="detail.solution"></div>
+					</div>
+				</div>
+				<div class="other-project">
+					<div class="title">其他项目</div>
+					<div class="list">
+						<div class="item" v-for="list in otherList">
+							<a :href="'projectDemandDetail.html?id='+list.id" >
+							<div class="info">
+								<p class="name" v-text="list.jane_title"></p>
+								<p class="belong">{{list.industry_name}}</p>
+								<div class="desp" v-html="list.info"></div>
+								<div class="time">
+									<div class="left">{{list.address}}</div>
+				 	 	    		<div class="right">{{list.science}}</div>
+								</div>
+							</div> 
+							</a> 
+						</div>
+					</div>
+					<p class="lookMore"><a href="technologyDemand.html"><span>查看更多</span></a></p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>  
+	<script type="text/javascript" src="../../js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="../../js/jquery.dlmenu.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script> 
+	<script type="text/javascript" src="../../js/vue.min.js"></script> 
+	<script> 
+		if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else { location.href = "../index/projectDemandDetail.html?id="+parseUrl().id;} 
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "中文", 
+				detailCont: "", 
+				detailAllContShow: false,
+				detail: {},
+				otherList:[]
+			},
+			created() {
+                if(localStorage.getItem('lang') == 'en'){
+                    this.lang = 'en';
+                    this.languageText = "English";
+                }
+				this.getDetail();
+			},
+			methods: { 
+				getDetail(){
+					let that = this;
+					$.ajax({
+						url: config.apiHost+'project/projectDemandDetail',
+						type: 'POST', //GET
+						async: true, //或false,是否异步
+						data: {
+                            lang: that.lang,
+							id: parseUrl().id
+						},
+						dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+						success: function (data, textStatus, jqXHR){
+							typeof data == "object"?'':data=JSON.parse(data);
+							// 发送成功
+							if(data.status == 'ok'){
+							console.log(data.data.list)
+								that.detail = data.data.detail;
+								that.otherList = data.data.list;
+								that.detailCont = that.detail.detail.replace(/<\/?.+?>/g,"").replace(/ /g,""); 
+								that.detailCont.length<20?that.detailAllContShow=true:'';
+							}else{
+								alert(data.result);
+							}
+						},
+						error: function (xhr, textStatus){
+							// 发送失败
+							console.log('错误')
+							console.log(xhr)
+							console.log(textStatus)
+						},
+					})
+                },
+                // 中英文切换
+                changeLang(){
+                    if(this.lang == 'cn'){
+                        this.lang = 'en';
+                        localStorage.setItem('lang','en');
+                        this.languageText = 'English';
+                        // 重新请求数据
+                        this.getDetail();
+                    }else{
+                        this.lang = 'cn';
+                        localStorage.setItem('lang','cn');
+                        this.languageText = '中文';
+                        // 重新请求数据
+                        this.getDetail();
+                    }
+                },
+			}, 
+		});
+		$(function() {
+			$('#dl-menu').dlmenu();   
+			$(".zhan").on("click",function(){
+				$(this).parent(".content").addClass("hide");
+				$(this).parent(".content").next(".content1").removeClass("hide");
+			})
+		})
+	</script>
+
+</html>

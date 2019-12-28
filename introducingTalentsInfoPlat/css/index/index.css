@@ -1,0 +1,143 @@
+.main { padding-bottom: 80px;}
+.block1 { position: relative;}
+.swiper-container1 {}
+.swiper-container1 .swiper-slide { line-height: 0; text-align: center; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.swiper-container1 .swiper-slide img { width: 100%; height: auto;}
+.swiper-container1 .swiper-button-next, .swiper-container1 .swiper-button-prev { width: 70px; height: 80px; background-size: 100% 100%;}
+.swiper-container1 .swiper-button-prev { background-image:url(../../img/index/icon/icon_arrow_1.png); left: 0;}
+.swiper-container1 .swiper-button-next { background-image:url(../../img/index/icon/icon_arrow_2.png); right: 0;}
+.block1 .info { width: 1170px; height: 170px; background-color: #FFF; box-shadow:0px 5px 9px 1px rgba(32,107,209,0.1); position: absolute; left: 50%; bottom: -85px; margin-left: -585px; z-index: 2; display: flex; display: -webkit-flex; display: -ms-flexbox;}                                                                                                                                              
+.block1 .info .item { flex: 1; text-align: center;}                                                                                                                                              
+.block1 .info .item .cont { display: inline-block;}                                                                                                                                              
+.block1 .info .item .num { font-size: 48px; line-height: 1; color: #206BD1; text-align: center; padding-top: 49px;}                                                                                                                                              
+.block1 .info .item .num span { float: left;}                                                                                                                                              
+.block1 .info .item .num .add { font-size: 12px; line-height: 1; color: #FA6041;}                                                                                                                                              
+.block1 .info .item .num:after { content:""; clear: both; display: block;}                                                                                                                                           
+.block1 .info .item .desp { font-size: 12px; line-height: 1; color: #999999; padding-top: 11px; text-align: left;}     
+
+.block2 { width: 1200px; margin: 0 auto; padding-top: 183px;}                                                                                                                                         
+.block2 .title { font-size: 24px; line-height: 1; color: #333333;}                                                                                                                                         
+.block2 .small-title { font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;}      
+.block2 .list { font-size: 0; padding-top: 17px; font-size: 0;}
+.block2 .list .item { display: inline-block; width: 270px; height: auto; margin-top: 40px; margin-right: 40px; cursor: pointer; vertical-align: top;}
+.block2 .list .item:nth-child(4n) { margin-right: 0;}
+.block2 .list .item .poster { width: 100%; height: 220px; line-height: 0; text-align: center;}
+.block2 .list .item .poster img { width: auto; height: 100%; } 
+.block2 .list .item .info { padding: 0 40px 27px;}
+.block2 .list .item .info .name { width: 100%; display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: 17px;}
+.block2 .list .item .info .name .left { font-size: 16px; color: #333333; line-height: 1.3; width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block2 .list .item .info .name .right { font-size: 14px; color: #666666; line-height: 1.5; width: 70px; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block2 .list .item .info .name:after { content:""; clear: both; display: block;} 
+.block2 .list .item .info .desp { margin-top: 10px; font-size: 14px; color: #999999; line-height: 1.7; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.block2 .list .item:hover .info .desp { overflow: auto; white-space: normal; text-overflow: initial; word-break: break-all;} 
+.block2 .list .item .info .desp .ditem { font-size: 14px; color: #999999; line-height: 1.7; }
+.block2 .list .item .info .desp .ditem span { padding: 0 2px;}
+.block2 .list .item .info .desp .ditem:last-child { border-right: none;}
+.block2 .list .item .info .desp .ditem:first-child { padding-left: 0;}
+.block2 .list .item .look { width: 268px; height: 40px; font-size: 14px; line-height: 40px; color: #999999; text-align: center; border: 1px solid #E6E6E6;}
+.block2 .list .item:hover .info { background: #206BD1;}
+.block2 .list .item:hover .info .name .left { color: #FFF;}
+.block2 .list .item:hover .info .name .right { color: #FFF;}
+.block2 .list .item:hover .info .desp .ditem { color: #FFF;}
+.block2 .list .item:hover .look { color: #206BD1; border: 1px solid #206BD1;}      
+
+.block3 { width: 1200px; margin: 0 auto; padding-top: 98px;}                                                                                                                                         
+.block3 .title { font-size: 24px; line-height: 1; color: #333333;}                                                                                                                                         
+.block3 .small-title { font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;}    
+.block3 .list { font-size: 0; font-size: 0;}
+.block3 .list .item { display: inline-block; width: 380px; height: auto; margin-top: 30px; margin-right: 30px; cursor: pointer;}
+.block3 .list .item:nth-child(3n) { margin-right: 0;} 
+.block3 .list .item .info { padding: 0 30px 29px;}
+.block3 .list .item .info .name { font-size: 20px; color: #206BD1; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: 25px;}
+.block3 .list .item .info .desp { width: 100%; height: 90px; font-size: 14px; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4;  line-clamp: 4; -webkit-box-orient: vertical; margin-top: 15px;}
+.block3 .list .item .info .time { margin-top: 20px;}
+.block3 .list .item .info .time .left { font-size: 14px; color: #999999; line-height: 1.3; width: 159px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block3 .list .item .info .time .right { font-size: 12px; color: #FA6041; line-height: 1.5; width: 159px; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block3 .list .item .info .time:after { content:""; clear: both; display: block;}  
+.block3 .list .item .look { width: 378px; height: 40px; font-size: 14px; line-height: 40px; color: #999999; text-align: center; border: 1px solid #E6E6E6;}
+.block3 .list .item:hover .info { background: #206BD1;}
+.block3 .list .item:hover .info .name { color: #FFF;}
+.block3 .list .item:hover .info .desp { color: #FFF;}
+.block3 .list .item:hover .info .time .left { color: #FFF;}
+.block3 .list .item:hover .info .time .right { color: #FFF;}
+.block3 .list .item:hover .look { color: #206BD1; border: 1px solid #206BD1;}     
+
+.block4 { width: 1200px; margin: 0 auto; padding-top: 98px;}                                                                                                                                         
+.block4 .title { font-size: 24px; line-height: 1; color: #333333;}                                                                                                                                         
+.block4 .small-title { font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;}  
+.block4 .list { font-size: 0; font-size: 0;}
+.block4 .list .item { display: inline-block; width: 373px; height: auto; margin-top: 30px; margin-right: 40px; padding-bottom: 20px; cursor: pointer;}
+.block4 .list .item:nth-child(3n) { margin-right: 0;} 
+.block4 .list .item .company { display: flex; display: -webkit-flex; padding-bottom: 20px; border-bottom: 1px solid #DCDCDC;}
+.block4 .list .item .company .poster { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; float: left; line-height: 0; overflow: hidden;}
+.block4 .list .item .company .poster img { width: 100%; height: 100%;}
+.block4 .list .item .company .right { float: left; width: 265px;}
+.block4 .list .item .company .right .cpname { font-size: 14px; color: #333333; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: 2px;}
+.block4 .list .item .company .right .desp { font-size: 14px; color: #999999; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
+.block4 .list .item .company:after { content:""; clear: both; display: block;} 
+.block4 .list .item .info .job-time-salary { font-size: 14px; color: #333333; line-height: 1.3; padding-top: 18px;}
+.block4 .list .item .info .job-time-salary .jobname { display: inline-block; max-width: 177px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block4 .list .item .info .job-time-salary .time { font-size: 14px; color: #999999; float: left;}
+.block4 .list .item .info .job-time-salary .salary { font-size: 12px; color: #FA6041; line-height: 1.5; float: right;}
+.block4 .list .item .info .job-time-salary:after { content:""; clear: both; display: block;} 
+.block4 .list .item .info .need { font-size: 14px; color: #666666; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: 5px;} 
+.block4 .list .item .info .position { } 
+.block4 .list .item .info .position .pot { width: 240px; overflow: hidden; white-space: nowrap; float: left;} 
+.block4 .list .item .info .position .pot span { display: inline-block; min-width: 48px; padding: 0 10px; text-align: center; font-size: 12px; color: #999999; line-height: 40px;} 
+.block4 .list .item .info .position .look { float: right; width: 110px; height: 40px; background: #206BD1; font-size: 14px; line-height: 40px; color: #FFFFFF;} 
+.block4 .list .item .info .time .right { font-size: 12px; color: #FA6041; line-height: 1.5; width: 159px; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block4 .list .item .info .time:after { content:""; clear: both; display: block;}  
+.block4 .list .item .look { width: 378px; height: 40px; font-size: 14px; line-height: 40px; color: #999999; text-align: center; border: 1px solid #E6E6E6;}                   
+
+.block5 { width: 1200px; margin: 0 auto; padding-top: 98px;}                                                                                                                                         
+.block5 .title { font-size: 24px; line-height: 1; color: #333333;}                                                                                                                                         
+.block5 .small-title { font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;}  
+.block5 .list { font-size: 0; font-size: 0;}
+.block5 .list .item { display: inline-block; width: 380px; height: auto; margin-top: 30px; margin-right: 30px; cursor: pointer;}
+.block5 .list .item:nth-child(3n) { margin-right: 0;} 
+.block5 .list .item .info { padding: 0 30px 29px;}
+.block5 .list .item .info .name { font-size: 20px; color: #206BD1; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: 25px;}
+.block5 .list .item .info .belong { font-size: 12px; color: #FA6041; line-height: 1.3; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-top: 6px;}
+.block5 .list .item .info .desp { width: 100%; height: 90px; font-size: 14px; color: #666666; line-height: 1.7;  text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 4;  line-clamp: 4; -webkit-box-orient: vertical; margin-top: 15px;}
+.block5 .list .item .info .time { margin-top: 20px;}
+.block5 .list .item .info .time .left { font-size: 14px; color: #999999; line-height: 1.3; width: 159px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left;}
+.block5 .list .item .info .time .right { font-size: 12px; color: #999999; line-height: 1.5; width: 159px; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: right;}
+.block5 .list .item .info .time:after { content:""; clear: both; display: block;}  
+.block5 .list .item .look { width: 378px; height: 40px; font-size: 14px; line-height: 40px; color: #999999; text-align: center; border: 1px solid #E6E6E6;}
+.block5 .list .item:hover .info { background: #206BD1;}
+.block5 .list .item:hover .info .name { color: #FFF;}
+.block5 .list .item:hover .info .belong { color: #FFF;}
+.block5 .list .item:hover .info .desp { color: #FFF;}
+.block5 .list .item:hover .info .time .left { color: #FFF;}
+.block5 .list .item:hover .info .time .right { color: #FFF;}
+.block5 .list .item:hover .look { color: #206BD1; border: 1px solid #206BD1;}    
+
+.block6 { width: 1200px; margin: 0 auto; padding-top: 98px;}                                                                                                                                         
+.block6 .title { padding: 0 10px; font-size: 24px; line-height: 1; color: #333333;}                                                                                                                        
+.block6 .small-title { padding: 0 10px; font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;} 
+.block6 .cont { height: 150px; box-shadow:0px 15px 30px 0px rgba(6,28,66,0.15); margin-top: 10px; position: relative;}         
+.swiper-container2 { height: 100%;}
+.swiper-container2 .swiper-slide { line-height: 0; text-align: center; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.swiper-container2 .swiper-slide .item { width: 200px; text-align: center;}
+.swiper-container2 .swiper-slide .cologo { display: inline-block; width: 60px; height: 60px; overflow: hidden; text-align: center; line-height: 0;}
+.swiper-container2 .swiper-slide .cologo img { width: 100%; height: 100%;}
+.swiper-container2 .swiper-slide .name { padding: 0 30px; height: 100%; font-size: 14px; line-height: 1.3; color: #999999; padding-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.block6 .cont .swiper-button-next,.block6 .cont  .swiper-button-prev { width: 25px; height: 25px; background-size: 100% 100%;}
+.block6 .cont .swiper-button-prev { background-image:url(../../img/index/icon/icon_arrow_3.png); left: -10px;}
+.block6 .cont .swiper-button-next { background-image:url(../../img/index/icon/icon_arrow_4.png); right: -10px;}                   
+
+.block7 { width: 1200px; margin: 0 auto; padding-top: 39px;}                                                                                                                                         
+.block7 .title { padding: 0 10px; font-size: 24px; line-height: 1; color: #333333;}                                                                                                                        
+.block7 .small-title { padding: 0 10px; font-size: 12px; line-height: 1; color: #999999; padding-top: 9px;} 
+.block7 .cont { height: 150px; box-shadow:0px 15px 30px 0px rgba(6,28,66,0.15); margin-top: 10px; position: relative;}         
+.swiper-container3 { height: 100%;}
+.swiper-container3 .swiper-slide { line-height: 0; text-align: center; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center;}
+.swiper-container3 .swiper-slide .item { width: 200px; text-align: center;cursor: pointer; position: relative; z-index: 3;;}
+.swiper-container3 .swiper-slide .cologo { display: inline-block; width: 65px; height: 58px; overflow: hidden; text-align: center; line-height: 0;}
+.swiper-container3 .swiper-slide .cologo img { width: auto; height: 100%;}
+.swiper-container3 .swiper-slide .name { padding: 0 30px; height: 100%; font-size: 14px; line-height: 1.3; color: #999999; padding-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.block7 .cont .swiper-button-next,.block7 .cont  .swiper-button-prev { width: 25px; height: 25px; background-size: 100% 100%;}
+.block7 .cont .swiper-button-prev { background-image:url(../../img/index/icon/icon_arrow_3.png); left: -10px;}
+.block7 .cont .swiper-button-next { background-image:url(../../img/index/icon/icon_arrow_4.png); right: -10px;} 
+   
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled { pointer-events: auto;}                                                         

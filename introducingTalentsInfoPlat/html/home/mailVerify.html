@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<title>邮箱验证</title>
+		<link rel="stylesheet" type="text/css" href="../../css/home/header.css" />   
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />   
+		<link rel="stylesheet" type="text/css" href="../../css/home/login.css" />
+		<style>
+			.title { color: #333333;}
+			.input-group { padding-bottom: .15rem;}
+			.icon-email { width: .33rem !important; height: .26rem !important; margin-top: .08rem; margin-left: .14rem;}
+			.icon-verify { width: .3rem !important; height: .33rem !important; margin-left: .15rem;}
+			.pwd-group { position: relative;}
+			.pwd-group .getCode { border: 0; background-color: #FFF; font-size: .22rem; line-height: 1; color: #333333; position: absolute; bottom: .1rem; right: 0; outline: none;}
+		</style>
+	</head>
+
+	<body>
+		<div class="container" id="app">
+			<p class="welcome">欢迎来到</p>
+	 		<p class="title">邮箱验证</p>
+	 		<div class="input-group">
+	 			<img class="icon icon-email hide" src="../../img/index/icon/icon_email_blue.png" alt="" />
+	    		<input type="text" v-model="loginForm.email" name="" class="account" value="" placeholder="邮箱"/>
+	    	</div>
+	    	<div class="input-group pwd-group"> 
+	    		<img class="icon icon-verify hide" src="../../img/index/icon/icon_verify.png" alt="" />
+	    		<input type="text" v-model="loginForm.code" name="" class="password" value="" placeholder="验证码"/> 
+	    		<button class="getCode" @click="sendEmail">{{getCodeText}}</button> 
+	    	</div> 
+    		<div class="login" @click="login">下一步</div>
+    		<div class="bg"></div>
+    		<div class="dot1"></div>
+    		<div class="dot2"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/font.js"></script>   
+	<script type="text/javascript" src="../../js/config.js"></script>     
+	<script type="text/javascript" src="../../js/vue.min.js"></script>  
+	<script>  
+		if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else { location.href = "../index/mailVerify.html";} 
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				indexText: "首页",
+				lang: "cn",
+				languageText: "English", 
+				getCodeText: "获取验证码", 
+				loginForm: {
+			        email: '',
+			        code: ''
+			    }, 
+			    totalTime: 60,
+			    canClick: true,
+			    cloak: ""
+			},
+			methods: {
+				sendEmail(){
+					let that = this;  
+					if (!that.canClick){
+						return false;
+					}
+					if(that.loginForm.email == '') {
+						alert('邮箱不能为空');
+					}else{ 
+						$.ajax({
+							url: config.apiHost +'login/SendEmail',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: {
+								email: that.loginForm.email
+							},
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								if(data.status == 'ok'){ 
+//									console.log(data)  
+									that.canClick = false; //改动的是这两行代码,限制点击
+//						            console.log(that.totalTime);
+						            that.getCodeText = that.totalTime + 's后重新发送'; //这里解决60秒不见了的问题
+						            that.cloak = setInterval(function () {
+							            that.totalTime--
+							            if (that.totalTime > 0) {
+							                that.getCodeText = that.totalTime + 's后重新发送'
+							            }
+							            if (that.totalTime <= 0) {     //当倒计时小于等于0时清除定时器
+							                clearInterval(that.cloak);
+							                that.getCodeText = '重新发送验证码';
+							                that.totalTime = 60;
+							                that.canClick = true;  //这里重新开启
+							            }
+						            }, 1000) 
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					}
+				},
+				login() {
+					let that = this;
+					if(that.loginForm.email === '' || that.loginForm.code === '') {
+						alert('邮箱或验证码不能为空');
+					} else {
+						$.ajax({
+							url: config.apiHost +'login/codeverify',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: that.loginForm,
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								if(data.status == 'ok'){
+//									console.log(data);  
+									alert(data.result);
+									var url = "forgetPassword.html?account="+that.loginForm.email;
+									window.location.href = url; 
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+	                 }
+				}  
+			}
+		});
+		$(function(){
+			$(".password").on("focus",function(){ 
+				$(this).parent().children(".icon").show();
+				$(this).parent().addClass("act");
+			})
+			$(".account").on("focus",function(){ 
+				$(this).parent().children(".icon").show();
+				$(this).parent().addClass("act");
+			}) 
+		})
+	</script> 
+</html>

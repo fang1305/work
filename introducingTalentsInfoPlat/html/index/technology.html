@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>引才引智</title>
+		<link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/footer.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/pagination.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index/technology.css" />
+	</head>
+
+	<body>
+		<div id="app" @click="chooseType(1,'close','')">
+			<div class="navBar">
+			 	<div class="nav">
+					<div class="chinese" @click="changeLang">
+						<span>{{languageText}}</span>
+						<i class="iconfont icon-sanjiao_xia"></i>
+					</div>
+					<div class="avatar"><img src="../../img/index/icon/avator.png" /> </div> 
+					 <ul class="nav-list">
+						<li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+						<li><a href="./expertTalents.html"><span>专家人才</span></a></li>
+						<li class="act"><a href=""><span>项目技术</span></a></li>
+                        <li><a href="./cooperativeAgency.html"><span>合作机构</span></a></li>
+					</ul> 
+				</div>
+			</div>
+			<div class="header">
+				<img src="../../img/index/co1.jpg" alt="" class="bg" />
+				<div class="title">
+					<div class="btitle">项目技术库</div>
+					<div class="stitle">Technology demand</div>
+				</div>
+			</div>
+			<div class="main">
+				<div class="top">
+					<ul>
+						<li class="act"><span>项目技术库</span></li>
+						<li><a href="./technologyDemand.html"><span>项目技术需求</span></a></li>
+					</ul>
+					<div class="search-group">
+						<div class="search">
+							<input @keydown.enter="getExperts(1)" type="text" name="" id="" v-model="searchObj.keywords" placeholder="搜索" />
+						</div>
+						<div class="search-btn" @click="getExperts(1)"><img src="../../img/index/icon/search.png"/></div>
+					</div>
+				</div>
+				<div class="navigation">
+					<div class="nav-category J_filter_country">
+						<h4>国家</h4> 
+						<span @click="chooseCountry('')" :class="['def',searchObj.nationality==''?'act':'']">不限</span>
+						<div class="nc-contain">
+							<span class="nctit">地区：</span>
+							<div class="country">
+								<span :class="['item',searchObj.nationality==country.nationality?'act':'']" @click="chooseCountry(country.nationality)" v-for="country in countrys" v-text="country.nationality"> </span>
+							</div>
+						</div>
+					</div>
+					<div class="nav-category J_filter_sel"> 
+					    <div class="nav-tab profession">
+							<div :class="['input',choose.industry.actHide?'act':'']" @click.stop="chooseType(1,'choose','industry')">
+					        	<i @click.stop="chooseType('','error','industry')" :class="['iconfont', choose.industry.errorHide?'hide':'', 'icon-error']"></i>
+					            <span v-text="choose.industry.typeVal"></span>
+					            <img src="../../img/index/icon/icon_arrow.png" alt="">
+					        </div>
+					        <div :class="['slist', choose.industry.chooseHide?'hide':'']">
+					        	<div class="sinput" @click.stop="chooseType('','choose','industry')">
+						            <span v-text="choose.industry.typeVal"></span>
+						            <img src="../../img/index/icon/icon_arrow.png" alt="">
+						        </div>
+						        <ul>
+						            <li v-for="data in industrys" @click="chooseType(data.industry_name,data.industry_id,'industry')" v-text="data.industry_name"></li>
+						        </ul>
+					        </div>
+					    </div> 
+					</div>
+				</div>
+				<div class="list">
+					
+					<div class="item" v-for="project in projects">
+						<a target="_blank" :href="'./projectDetail.html?id='+project.id">
+							<div class="info">
+								<p class="name" v-text="project.jane_title"></p>
+								<div class="desp" v-text="project.info"></div>
+								<div class="time">
+									<div class="left" v-text="project.nationality_name+'：'+project.release_time.substring(0,10)"></div>
+									<div class="right" v-text="project.industry_name"></div>
+									<!-- <div class="right">{{project.core_science}}</div> -->
+								</div>
+							</div>
+							<div class="look">查看</div>
+						</a>
+					</div>
+					<!-- <div class="item">
+						<div class="info">
+							<p class="name">水电基地为拉脱维亚里加项目</p>
+							<div class="desp">每年7月下旬，美丽的小城Oshkosh，都会迎来超过 1万多架飞机、50多万观众、800多家航空制造商同 时还会举行超过1000场丰富多彩的通用航空普及教育、论坛和商务交流活动。EAA AirVenture已成为EAA AirVenture已成为EAA AirVenture已成为</div>
+							<div class="time">
+								<div class="left">英国：2016-12-07</div>
+								<div class="right">新能源/环保技术</div>
+							</div>
+						</div>
+					 	<div class="look">查看</div>
+					</div> -->
+				</div>
+				<div class="pages">
+					<div id="pagination"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="wrap">
+					<div class="left">
+						<p>支持单位: 河北省外国专家局</p>
+						<p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+						<p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+					</div>
+					<div class="right">
+						<img class="code" src="../../img/index/icon_code.jpg" alt="" />
+						<div class="contact-us">
+							<p>联系我们</p>
+							<div class="email">
+								<img src="../../img/index/icon/icon_email.png" />
+								<span>service@hbafea.com</span>
+							</div>
+							<div class="email">
+								<img src="../../img/index/icon/icon_telphone.png" />
+								<span>0311-85111217(8:30-17:30)</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="cont">
+					<a href=""><span>关于我们</span></a> <span>|</span> <a href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.js"></script>  
+		<script type="text/javascript" src="../../js/pagination.js"></script>
+		<script type="text/javascript" src="../../js/vue.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script>
+			if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				location.href = "../home/technology.html";
+			} else {} 
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					indexText: "首页",
+					lang: "cn",
+					languageText: "English", 
+					industrys: [],
+					countrys: [], 	// 国籍
+					projects: [],
+					searchObj:{
+						lang: 'cn',
+						limit: 6,
+						page: 1,
+						nationality: '',
+						industry_id: '',
+						keywords: '',
+						works_id: ''
+					},
+					choose:{
+						industry:{
+							typeVal: '行业要求',
+							chooseHide: true,
+							errorHide: true,
+							id: 0
+						},
+					}
+				},
+				created() {
+                    if(localStorage.getItem('lang') == 'en'){
+                        this.lang = 'en';
+                        this.languageText = "中文";
+                    }
+                    if(parseUrl()){
+                        this.searchObj.works_id = parseUrl().id?parseUrl().id:'';
+                        this.companyName = localStorage.getItem('companyName')?localStorage.getItem('companyName'):'';
+                        this.searchObj.keywords = localStorage.getItem('companyName')?localStorage.getItem('companyName'):'';
+                        localStorage.removeItem('companyName')
+                    }
+					this.getList('industrys','home/industry');
+					this.getList('countrys','home/nationality');
+					this.getExperts();
+				},
+				methods: { 
+                    // 中英文切换
+                    changeLang(){
+                        if(this.lang == 'cn'){
+                            this.lang = 'en';
+                            localStorage.setItem('lang','en');
+                            this.languageText = '中文';
+                            // 重新请求数据
+                            this.getList('industrys','home/industry');
+                            this.getList('countrys','home/nationality');
+                            this.getExperts(1);
+                        }else{
+                            this.lang = 'cn';
+                            localStorage.setItem('lang','cn');
+                            this.languageText = 'English';
+                            // 重新请求数据
+                            this.getList('industrys','home/industry');
+                            this.getList('countrys','home/nationality');
+                            this.getExperts(1);
+                        }
+                    },
+					// 选择国籍
+					chooseCountry(name){
+						this.searchObj.nationality = name;
+						this.searchObj.page = 1;
+						this.getExperts();
+					},
+					// 选择人才分类
+					chooseType(val,type,status){
+						let that = this;
+						if(type == 'close'){
+							// 关闭选择框
+							this.choose.industry.chooseHide = true;
+						}else if(type == 'choose'){ 
+							// 展开选择类型
+							this.choose[status].chooseHide = !this.choose[status].chooseHide;
+						}else if(type == 'error'){
+							this.searchObj.industry_id = ''
+							this.choose[status].actHide = false;
+							this.choose[status].errorHide = true;
+								this.choose[status].typeVal = '行业要求';
+							this.searchObj.page = 1;
+							that.getExperts();
+						}else{
+							// 选择完成
+							this.searchObj.industry_id = type;
+							this.choose[status].chooseHide = true;
+							this.choose[status].typeVal = val;
+							this.choose[status].errorHide = false;
+							this.choose[status].actHide = true;
+							this.searchObj.page = 1;
+							that.getExperts();
+						}
+					},
+					getList(type,url){
+						let that = this;
+						$.ajax({
+							url: config.apiHost+url,
+							type: 'POST', //GET
+                            async: true, //或false,是否异步
+                            data:{
+                                lang: that.lang
+                            },
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								if(data.status == 'ok'){
+									that[type] = data.data;
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					},
+					getExperts(type){
+						let that = this;
+						type?that.searchObj.page = 1:'';
+                        that.searchObj.lang = that.lang;
+                        if(that.searchObj.keywords != that.companyName || that.companyName==''){
+                            that.searchObj.works_id = '';
+                        }
+                        $.ajax({
+							url: config.apiHost+'project/projectHomeList',
+							type: 'POST', //GET
+							async: true, //或false,是否异步
+							data: that.searchObj,
+							dataType: 'json', //返回的数据格式：json/xml/html/script/jsonp/text
+							success: function (data, textStatus, jqXHR){
+								typeof data == "object"?'':data=JSON.parse(data);
+								// 发送成功
+								console.log(data)
+								if(data.status == 'ok'){
+									that.searchObj.page == 1?that.createPagination(data.data.count):'';
+									var list = data.data.list;
+									that.projects = list;
+								}else{
+									alert(data.result);
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					},
+					createPagination(num) {
+						console.log(num)
+						num = parseInt(num);
+						let that = this;
+						var container = $('#pagination');
+						var sources = function() {
+							var result = [];
+							for(var i = 0; i <= num; i++) {
+								result.push(i);
+							}
+							return result;
+						}();
+						var options = {
+							dataSource: sources,
+							pageSize:6,
+							className: 'paginationjs-theme-blue',
+							callback: function(response, pagination) {
+								//window.console && console.log(response, pagination);
+								var dataHtml = '<ul>';
+								$.each(response, function(index, item) {
+									dataHtml += '<li>' + item + '</li>';
+								});
+								dataHtml += '</ul>';
+								container.prev().html(dataHtml);
+								if(that.searchObj.page!=pagination.pageNumber){
+                                    that.searchObj.page = pagination.pageNumber;
+                                    that.getExperts();
+                                }
+		//						page = pagination.pageNumber; 
+							}
+						};
+						container.addHook('beforeInit', function() {
+							window.console && console.log('beforeInit...');
+						});
+						container.pagination(options);
+						container.addHook('beforePageOnClick', function(e) {
+							window.console && console.log('beforePageOnClick...');
+						});
+						return container;
+					}
+				}, 
+			}); 
+		</script>
+	</body>
+
+</html>

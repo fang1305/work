@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="divport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>河北省引才引智网</title>
+    <meta name="description" property="seo_description" content="河北省引才引智网" />
+    <meta name="keywords" property="seo_keywords" content="河北省引才引智网" />
+    <link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/public/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/index/newsLine.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <div class="left">
+                <div class="logo">
+                    <img src="../../img/icon/logo.png" />
+                </div>
+                <p>支持单位：河北省外国专家局</p>
+            </div>
+            <div class="right">
+                <div class="htel">
+                    <img src="../../img/icon/icon_tel.png" />
+                    <div class="line"></div>
+                    <span class="tel">0311-85111217</span>
+                </div>
+                <div class="email">service@hbafea.com</div>
+            </div>
+
+            <div class="search-group">
+                <div class="search">
+                    <input type="text" v-model="keyword" name="keywords" id="keywords" value="" placeholder="搜索" />
+                </div>
+                <div class="search-btn" @click="searchFun()">搜索</div>
+            </div>
+        </div>
+        <div class="navBar">
+            <div class="nav">
+                <ul class="nav-list">
+					<li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+                    <li v-for="item in navBar" :class="[parentid == item.id?'act':'']"><span>{{item.typename}}</span>
+                        <ul class="dropdown-menu">
+                            <li v-on:click="articleList(item.childList[0].id,item.id,0)"></li>
+                            <li v-for="item1 in item.childList" v-on:click="articleList(item1.id,item.id)">
+                                <a>{{item1.typename}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+				<div class="chinese" @click="changeLang"> 
+                    <span>{{languageText}}</span>
+                    <i class="iconfont icon-sanjiao_xia"></i>
+                </div>
+                <img class="avatar" src="../../img/icon/icon_avatar.png" />
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="second-nav" v-if="smallNav && position">
+                <div class="list">
+                    <span v-for="item in smallNav" :class="[typeid == item.id?'act':'']"
+                        v-on:click="articleList(item.id,parentid)">{{item.typename}}</span>
+                </div>
+                <div class="position" v-if="position">{{yourposition}}><span>{{position}}</span></div>
+            </div>
+            <div class="intro-box">
+                <h3>计划介绍</h3>
+                <p>卓学-卓识-卓越人才支持计划2011年9月正式启动 [1] ，简称“卓越人才计划”。这是根据师资队伍建设的客观要求和人才成长的内在规律特别
+                    构建的优秀中青年教师培养支持计划，旨在通过构建衔接紧密的三层次支持体系，激励我校中青年教师潜心学术，取得国内领先或国际一流的研究
+                    成果,实现学识卓越。</p>
+            </div>
+            <div class="news-list">
+				<div class="news flex-def flex-zBetween" v-for="item in newsList" v-on:click="articleDetail(item.aid,item.typeid,item.parent_id)">
+                    <div class="info">
+                        <p class="name">{{item.title}}</p>
+						<p class="desp">{{item.seo_description | getDesp}}</p>
+                    </div>
+                    <div class="invite-btn">
+                        <p class="time">{{item.add_time | getDate}}</p>
+                        <p class="btn">申请计划</p>
+                    </div>
+				</div>
+                <!-- <div class="news" v-for="item in newsList" v-on:click="articleDetail(item.aid,item.typeid,item.parent_id)">
+                </div> -->
+            </div>
+            <div class="pages">
+                <div id="pagination"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="wrap">
+                <div class="left">
+                    <p>支持单位: 河北省外国专家局</p>
+                    <p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+                    <p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+                </div>
+                <div class="right">
+                    <img class="code" src="../../img/icon/icon_code.jpg" alt="" />
+                    <div class="contact-us">
+                        <p>联系我们</p>
+                        <div class="email">
+                            <img src="../../img/icon/icon_email.png" />
+                            <span>service@hbafea.com</span>
+                        </div>
+                        <div class="email">
+                            <img src="../../img/icon/icon_telphone.png" />
+                            <span>0311-85111217(8:30-17:30)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="wrap">
+                <a href=""><span>关于我们</span></a> <span>|</span> <a
+                    href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+            </div>
+        </div>
+        <div class="contact-gotop">
+            <div class="contact">
+                <img src="../../img/icon/index/icon_kefu.png" alt="" />
+            </div>
+            <div class="gtop">
+                <img src="../../img/icon/index/icon_gotop.png" alt="" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/pagination.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/rest.js"></script>
+    <script type="text/javascript" src="../../js/vue.min.js"></script>
+    <script type="text/javascript" src="../../js/index/newsLine.js"></script>
+</body>
+
+</html>

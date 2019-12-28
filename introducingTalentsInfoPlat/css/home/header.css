@@ -1,0 +1,39 @@
+html,body { width: 100%; height: 100%; padding: 0; margin: 0; font-family: "微软雅黑"; font-size: 0;}
+p,ul,li { margin: 0; padding: 0;}
+a { text-decoration: none;}
+ul,li { list-style: none;}
+.hide { display: none;}
+.header { width: 100%; height: 1rem; position: relative; }
+.header .menu { width: .4rem; line-height: 0; position: absolute; top: .33rem; left: .27rem;}
+.header .menu img { width: 100%; height: auto;}
+.header .logo { text-align: center; padding-top: .34rem; line-height: 0;}
+.header .logo img { width: auto; height: .42rem;}
+.header .search { width: .4rem; line-height: 0; position: absolute; top: .33rem; right: .27rem;}
+.header .search img { width: 100%; height: auto;}
+
+.bottom { width: 100%; height: .48rem; font-size: .18rem; line-height: .48rem; color: #999999; text-align: center;}
+.bottom a { color: #999999;}
+.footer { padding: .27rem; position: relative;}  
+.footer .left { width: 100%;} 
+.footer .left p { font-size: .18rem; line-height: 1; color: #999999; margin-top: .18rem;} 
+.footer .left p.title { font-size: .22rem; line-height: 1; color: #666666; margin-top: .2rem;} 
+.footer .right { padding-top: .36rem; display: flex; display: -webkit-flex; line-height: 0;} 
+.footer .right .code { width: .95rem; height: .95rem; margin-right: 21px; } 
+.footer .right .contact-us p { font-size: .22rem; line-height: 1; color: #999999;} 
+.footer .right .contact-us .email { margin-top: .15rem; font-size: 0;}   
+.footer .right .contact-us .email span { font-size: .18rem; line-height: 1; color: #999999;} 
+.footer:after { width: 6.96rem; height: 1px; content: ''; background-color: #999999; position: absolute; bottom: 0; left: .27rem;}
+@font-face {
+  font-family: "SourceHanSansCN-Regulars";
+  src: url("../fonts/SourceHanSansCN-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} 
+
+.cpMask { width: 5.14rem; height: .9rem; font-size: 0; background:rgba(255,255,255,1); box-shadow:0px 0px 18px 0px rgba(0,70,141,0.3); opacity:0.8; border-radius:.45rem; position: fixed; bottom: .2rem; left: 1.18rem; z-index: 10; line-height: 0;}
+.cpMask .kefu { width: .4rem; height: .41rem; margin-top: .25rem; margin-left: .72rem;}
+.cpMask .person { display: inline-block; width: .35rem; height: auto; margin-top: .25rem; margin-left: 1.18rem; line-height: 0;}
+.cpMask .person img { width: 100%; height: 100%;}
+.cpMask .language { display: inline-block; line-height: 0; float: right;}
+.cpMask .language span { font-size: .24rem; line-height: .9rem; color: #00468D;}
+.cpMask .arrow { width: .24rem; height: .12rem; margin-right: .72rem; margin-left: .09rem;}

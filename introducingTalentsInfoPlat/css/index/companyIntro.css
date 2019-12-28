@@ -1,0 +1,42 @@
+.header { width: 100%; padding-top: 30px; background-color: #EEEEEE;}
+.header .top { width: 1203px; padding: 50px 0; background: #FFFFFF; margin: 0 auto; position: relative;}
+.header .top .cologo { width: 160px; height: 160px; line-height: 0; float: left; margin-left: 51px; margin-right: 47px;}
+.header .top .cologo img { width: 100%; height: 100%;}
+.header .top .info { float: left;}
+.header .top .info .name { font-size: 36px; line-height: 1; color: #333333;}
+.header .top .info .country { font-size: 18px; line-height: 1; color: #999999; padding-top: 11px;}
+.header .top .info .country span { padding-right: 31px;}
+.header .top .info ul { height: 46px; margin-top: 19px;}
+.header .top .info ul li { padding: 0 30px; border-right: 1px solid #DFDFDF; float: left;}
+.header .top .info ul li:first-child { padding-left: 0;}
+.header .top .info ul li:last-child { border-right: 0;}
+.header .top .info ul li .num { font-size: 24px; line-height: 1; color: #666666; padding-top: 1px;}
+.header .top .info ul li .text { font-size: 14px; line-height: 1; color: #999999; padding-top: 9px;}
+.header .top:after { content:""; clear: both; display: block;} 
+.header .top .time { font-size: 18px; line-height: 1; color: #999999; position: absolute; right: 32px; bottom: 49px;}
+.header .navlist { width: 1203px; margin: 0 auto;display: flex; display: -webkit-flex; display: -ms-flexbox; padding-top: 39px;}
+.header .navlist li { font-size: 24px; line-height: 1; color: #999999; padding-bottom: 29px; margin-right: 38px; cursor: pointer;}
+.header .navlist li.act { color: #333333; border-bottom: 2px solid #206BD1;}
+
+.main { width: 1200px; margin: 0 auto; padding-top: 48px; padding-bottom: 80px; display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .left { width: 803px; margin-right: 50px;}
+.main .left .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .left .title span { font-size: 24px; line-height: 1; color: #333333; padding-right: 18px;}
+.main .left .title .line { flex: 1; height: 1px; background: #999999; border: 0; margin-top: 12px;}
+.main .left .cont { font-size: 18px; line-height: 1.7; color: #666666; padding-top: 22px; word-break: break-all;}
+.main .left .cont img { width: 100% !important;}
+.main .right { width: 350px;}
+.main .right .coInfo .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .right .coInfo .title span { font-size: 24px; line-height: 1; color: #333333; padding-right: 18px;}
+.main .right .coInfo .title .line { flex: 1; height: 1px; background: #999999; border: 0; margin-top: 12px;}
+.main .right .coInfo .list {}
+.main .right .coInfo .list .item { padding-top: 19px;}
+.main .right .coInfo .list .item .iconfont { padding-right: 10px;}
+.main .right .coInfo .list .item span { font-size: 14px; line-height: 18px; color: #666666;}
+
+.main .right .welfare { padding-top: 40px;}
+.main .right .welfare .title { display: flex; display: -webkit-flex; display: -ms-flexbox;}
+.main .right .welfare .title span { font-size: 24px; line-height: 1; color: #333333; padding-right: 18px;}
+.main .right .welfare .title .line { flex: 1; height: 1px; background: #999999; border: 0; margin-top: 12px;}
+.main .right .welfare .list {}
+.main .right .welfare .list .item { display: inline-block; min-width: 70px; /*height: 30px; */padding: 0 10px; font-size: 14px; line-height: 30px; color: #666666; border: 1px solid #999999; margin-left: 20px; margin-top: 20px; text-align: center;} 

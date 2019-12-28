@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="divport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>河北省引才引智网</title>
+		<meta name="description" property="seo_description" content="河北省引才引智网" />
+		<meta name="keywords" property="seo_keywords" content="河北省引才引智网" /> 
+		<link rel="stylesheet" type="text/css" href="../../css/public/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/public/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index/expertsElegantDetail.css" />
+		<style>
+			.mcont .left { width: 100% !important; margin-right: 0 !important;} 
+			.swiper-slide { line-height: 0; text-align: center; font-size: 18px; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex;
+      display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; }
+			.mcont .left .newsCont { padding-top: 15px;}
+			.mcont .left .newsCont p { padding: 20px 30px;}
+			.swiper-pagination { width: auto; position: absolute; bottom: 28px; color: #FFF; text-align: right; right: 40px;}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="header">
+				<div class="left">
+					<div class="logo">
+						<img src="../../img/icon/logo.png" />
+					</div>
+					<p>支持单位：河北省外国专家局</p>
+				</div>
+				<div class="right">
+					<div class="htel">
+						<img src="../../img/icon/icon_tel.png" />
+						<div class="line"></div>
+						<span class="tel">0311-85111217</span>
+					</div>
+					<div class="email">service@hbafea.com</div>
+				</div>
+
+				<div class="search-group">
+					<div class="search">
+						<input type="text" v-model="keyword" name="keywords" id="keywords" value="" placeholder="搜索" />
+					</div>
+					<div class="search-btn" @click="searchFun">搜索</div>
+				</div>
+			</div>
+			<div class="navBar">
+				<div class="nav">
+					<ul class="nav-list">
+						<li><a href="../../index.html"><span class="indexPage">{{indexText}}</span></a></li>
+						<li v-for="item in navBar" :class="[parentid == item.id?'act':'']"><span>{{item.typename}}</span>
+							<ul class="dropdown-menu">
+								<li v-on:click="articleList(item.childList[0].id,item.id,0)"></li>
+								<li v-for="item1 in item.childList" v-on:click="articleList(item1.id,item.id)">
+									<a>{{item1.typename}}</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="chinese" @click="changeLang"> 
+						<span>{{languageText}}</span>
+						<i class="iconfont icon-sanjiao_xia"></i>
+					</div>
+					<img class="avatar" src="../../img/icon/icon_avatar.png" /> 
+				</div>
+			</div> 
+
+			<div class="main">
+				<div class="second-nav" v-if="smallNav && position">
+					<div class="list">
+						<span v-for="item in smallNav" :class="[typeid == item.id?'act':'']" v-on:click="articleList(item.id,parentid)">{{item.typename}}</span> 
+					</div>
+					<div class="position" v-if="position">{{yourposition}}><span>{{position}}</span></div>
+				</div>
+				<div class="mcont">
+					<div class="left">
+						<div class="name" v-if="article.title">{{article.title}}</div>
+						<div class="time-view" v-if="article">
+							<span class="time" v-if="article.add_time">{{article.add_time}}</span>
+							<span class="from" v-if="article.typename">{{article.typename}}</span>
+							<span class="writer" v-if="article.author">作者：{{article.author}}</span>
+							<div class="view" v-if="article.click">
+								<i class="iconfont icon-yanjing"></i>
+								<span>{{article.click}}次浏览</span>
+							</div>
+						</div>
+						<hr class="line" v-if="article" /> 
+						<div class="newsCont">
+							<div class="swiper-container">
+							    <div class="swiper-wrapper">
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div>
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+								    <div class="swiper-slide"><img src="../../img/1.jpg"/></div> 
+							    </div> 
+							    <div class="swiper-pagination"></div>
+							</div>
+							<p>为使河北省科技企业经营管理者进一步拓展视野，学习对标世界最前沿科学技术，汲取创新因子，激发企业发
+展动力，探索企业快速发展的新路径。11月20日-28日，由河北省科技厅、美国河北硅谷创新中心 联合举办
+的河北科技卓越人才国际交流计划 •美国硅谷站活动组织18名河北省科技企业管理者赴美国硅谷学习培训。</p>
+						</div> 
+					</div> 
+				</div>
+			</div>
+			<div class="contact-gotop">
+				<div class="contact">
+					<img src="../../img/icon/index/icon_kefu.png" alt="" />
+				</div>
+				<div class="gtop">
+					<img src="../../img/icon/index/icon_gotop.png" alt="" />
+				</div>
+			</div>
+			<div class="footer">
+				<div class="wrap">
+					<div class="left">
+						<p>支持单位: 河北省外国专家局</p>
+						<p>主办单位: 河北省国际人才交流协会、河北省国际信息技术交流协会</p>
+						<p>协办单位：硅谷（石家庄）创新中心 、河北坤展博宏科技有限公司</p>
+					</div>
+					<div class="right">
+						<img class="code" src="../../img/icon/icon_code.jpg" alt="" />
+						<div class="contact-us">
+							<p>联系我们</p>
+							<div class="email">
+								<img src="../../img/icon/icon_email.png" />
+								<span>service@hbafea.com</span>
+							</div>
+							<div class="email">
+								<img src="../../img/icon/icon_telphone.png" />
+								<span>0311-85111217(8:30-17:30)</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="wrap">
+					<a href=""><span>关于我们</span></a> <span>|</span> <a href="http://www.beian.miit.gov.cn"><span>备案号：冀ICP备19031285号-1</span></a>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/rest.js"></script>
+		<script type="text/javascript" src="../../js/vue.min.js"></script>   
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>   
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					title: "",
+					indexText: "首页",
+					lang: "cn",
+					languageText: "English",
+					yourposition: "您的位置",
+					navBar: "",
+					smallNav: "",
+		            keyword: "",
+		            position: "",
+					parentid: "",
+					typeid: "",
+					article: {  
+						title: "河北科技卓越人才国际交流计划--美国硅谷站活动圆满落幕", 
+						author: "河北引才引智", 
+						click: 102,
+						add_time: 2019-11-09, 
+						content: "",
+						typename: "专家风采",
+					}, 
+					recomList: "",
+					searchObj: {
+						arctype_id:"",
+						lang: 'cn', 
+						aid: "",
+					}
+				},
+				created() {  
+			        if(sessionStorage.lang == 'en'){
+			            this.languageText = "中文";
+				 		this.indexText = "Index";
+				 		this.yourposition = "Your position";
+				 		this.lang = "en";
+					}else{
+						sessionStorage.lang == 'cn';
+					}  
+                    if(parseUrl()){
+                        this.parentid = parseUrl().parentid?parseUrl().parentid:''; 
+                        this.typeid = parseUrl().typeid?parseUrl().typeid:''; 
+                        this.parentid = 37; 
+                        this.typeid = 39; 
+                    } 
+					this.requireData();
+			    },
+				methods: {  
+					requireData(){
+						// 导航栏
+						this.getList('navBar','home/arctypeList'); 
+						this.getList('smallNav','home/arctypeList'); 
+						// 文章详情
+//						this.getList('article','home/articleDetail'); 
+			        },
+					getList(type,url,typeid){ 
+			            let that = this;
+			           	if(type=="navBar"){  
+			           		that.searchObj.arctype_id = "";
+			           	}  
+			           	if(type=="smallNav"){ 
+			           		that.searchObj.arctype_id = 37; 
+			           	}  
+			            that.searchObj.lang = that.lang; 
+						$.ajax({
+							url: config.apiHost+url,
+							type: 'GET',  
+			                async: true,  
+			                data:that.searchObj,
+							dataType: 'json', 
+							success: function (ret){
+								typeof ret == "object"?'':ret=JSON.parse(ret);
+								// 发送成功 
+								if(ret.status == 'ok'){
+									var list = ret.data;
+//			                        console.log(ret);
+			                        if(type=="smallNav"){
+			                        	that[type] = list[0].childList;
+										for(var i = 0; i< that.smallNav.length; i++){
+											if(that.typeid == that.smallNav[i].id){ 
+												that.position = that.smallNav[i].typename;
+												return false;
+											}
+										}
+			                        }else if(type=="article"){ 
+			                        	 
+			                        }else{ 
+			                        	that[type] = list;
+			                        } 
+								}
+								else{
+									that[type] = "";
+								}
+							},
+							error: function (xhr, textStatus){
+								// 发送失败
+								console.log('错误')
+								console.log(xhr)
+								console.log(textStatus)
+							},
+						})
+					},
+					articleList(typeid, parentid,level) {
+						var typeid = typeid;
+						var parentid = parentid;
+						if( parentid==9 && level==0 || parentid == 10 && level==0 ){  
+						    var url = "http://ku.hbafea.com";
+						}else if( typeid==11 || typeid == 50){           //专家人才
+						    var url = "http://ku.hbafea.com/html/index/expertTalents.html";
+						}else if( typeid==13 || typeid == 51){           //项目技术
+						    var url = "http://ku.hbafea.com/html/index/technology.html";
+						}else if( typeid==15 || typeid == 52){           //合作机构
+						    var url = "http://ku.hbafea.com/html/index/cooperativeAgency.html";
+                        }else if( typeid == 19 || typeid == 20){
+                            var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+                            // var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+                        }else if( typeid == 33 || typeid == 34 || typeid == 29 || typeid == 30 || typeid == 35 || typeid == 36 || typeid == 31 || typeid == 32){
+                            var url = "newsLine.html?typeid=" + typeid + "&parentid=" + parentid; 
+						}else if( typeid==21 || typeid == 22){ //国际交流培训
+						    var url = "exchangeTrainingList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}else if( typeid==23 || typeid == 24){           //名师讲堂
+						    var url = "teacherLectureList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}else{
+							var url = "newsList.html?typeid=" + typeid + "&parentid=" + parentid;
+						}   
+					 	location.href = url;
+					 	//window.open(url);
+					}, 
+					// 中英文切换
+                    changeLang(){
+                        this.lang == "en"?sessionStorage.lang = "cn":sessionStorage.lang = "en";  
+						location.href = "../../index.html";
+                    }, 
+                    searchFun() {
+			            var url = "search.html?keywords=" + this.keyword + '&typeid=' + parseUrl().typeid + '&parentid=' + parseUrl().parentid;
+                        window.open(url);
+                    },
+				},
+				filters: {
+					getDate: function(str) {
+						var oDate = new Date(str*1000),
+						oYear = oDate.getFullYear(),
+						oMonth = oDate.getMonth() + 1,
+						oDay = oDate.getDate(),
+						oHour = oDate.getHours(),
+						oMin = oDate.getMinutes(),
+						oSec = oDate.getSeconds(),
+						oTime = oYear + '-' + oMonth + '-' + oDay; //最后拼接时间
+						//console.log(oTime);
+						return oTime;
+					}, 
+				},
+			});
+			$(function() {      
+				$(".gtop").on("click", function() {
+					window.scrollTo(0, 0);
+				})
+				var swiper = new Swiper('.swiper-container', {
+			        pagination: {
+				        el: '.swiper-pagination',
+				        type: 'fraction',
+				    },
+			    });
+			})  
+			var bodyH = $("body").height();
+			var headerH = $(".header").height();
+			var navBarH = $(".navBar").height();
+			var footerH = $(".footer").height();
+			var bottomH = $(".bottom").height();
+			var mainH = bodyH - headerH - navBarH -footerH - bottomH - 135;  
+			$(".main").css({"min-height":mainH});
+		</script>
+	</body> 
+</html>
